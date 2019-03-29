@@ -20,9 +20,9 @@ Our program will be aimed to solve the issue of inventory management and trackin
 ## Problem Setting:
 This program will be set up to be used in retail stores such as supermarkets, clothing stores, sporting chains, restaurants - etc. This will allow for management to be able to provide up-to-date information of what commodities are in-stock an out-of-stock just by one click, what are the potential commodities might be running out faster than other commodities, and when they will have to order more commodity to keep the store well stocked.
 
-## Group member included:
+#### Group members:
 - Lam San Wai Iestyn
 - Ngo Yan Lun
 
-## Mentor:
+#### Mentor:
 - Woo Chung Yu
