@@ -17,4 +17,4 @@ Our program will be aimed to solve the issue of inventory management and trackin
 9. Provide statistics on rate of consumption/sale of each commodity based on data entered by staff, to help management predict how much they would need to procure to continue to match demand.
 
 ## Problem Setting:
-This program wil be set up to be used in retail stores such as supermarkets, clothing stores, sporting chains, restaurants - etc. This will allow for management to be able to keep track of what they have in the store, what might be running out faster than other commodities, and when they will have to order more commodity to keep the store well stocked.
+This program will be set up to be used in retail stores such as supermarkets, clothing stores, sporting chains, restaurants - etc. This will allow for management to be able to provide up-to-date information of what commodities are in-stock an out-of-stock just by one click, what are the potential commodities might be running out faster than other commodities, and when they will have to order more commodity to keep the store well stocked.
