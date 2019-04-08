@@ -1,5 +1,6 @@
 #include <iostream>
 #include <string>
+#include <sstream>
 using namespace std;
 
 /*
@@ -13,21 +14,31 @@ Features of the Program
 */
 
 int main(){
-    string input;
-    while (input != "exit"){
-        cout << "Please input your option: \nType \"options\" to view what are the options.";
-        switch (input){
-            case (options){
+    string input, option;
+    istringstream inputline(input);
+    while (inputline >> option){
+        cout << "Please input your option: \nType \"options\" to view what are the options.\nType \"exit\" if you want to quit the program";
+        switch (option){
+            case ("options"){
                 options();
+            }
+            case ("help"){
+
+            }
+            case ("exit"){
+                cout << "This is the end of the program." << endl;
+                return 0;
             }
         }
     }
 }
-// to view to options and connect to 
+// to view the options
 void options(){
-    cout << "Search"
+    cout << "Search" <<
 }
 
-void help(){
-
+//
+void help(string){
+    cout << "Which option do you to know more?" << endl;
+    
 }
