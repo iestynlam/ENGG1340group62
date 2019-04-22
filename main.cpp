@@ -28,7 +28,7 @@ int main(){
         }
         else{
             if (option == "help"){
-            cout << "Which option do you to know more?" << endl;
+            cout << "Which option do you to know more about?" << endl;
             cin >> option;
             help(option);
             intro();
@@ -40,7 +40,7 @@ int main(){
             }
         // More options insect here
         else{
-            cout << "Undefined option, please enter the option again." << endl << endl;
+            cout << "Undefined option, please re-enter a valid option." << endl << endl;
             intro();
             }
         }
@@ -59,10 +59,10 @@ void options(){
 void help(string option){
 
     if (option == "options"){
-        cout << "To view all options." << endl;
+        cout << "To view all availabe options." << endl;
     }
     else{if (option == "help"){
-        cout << "To view options explaination and guideline." << endl;
+        cout << "To view options explaination and guidelines." << endl;
     }
     else{if (option == " search"){
         cout << "To search commodities according to different filters (e.g. in-stock/out-of-stock)." << endl;
@@ -77,7 +77,7 @@ void help(string option){
         cout << "To exit the program." << endl;
     }
     else{
-        cout << "This is not an option." << endl;
+        cout << "This is not an existing option." << endl;
     }
 }
 }
