@@ -20,7 +20,18 @@ struct commodity {
   int qty; // good quantity
 } ;
 
-void intro(int x);
+void intro(int x) {
+  if (x == 0) { // first intro message
+    cout << "// Welcome to the commodity manager! //" << endl << "\nType \"options\" to view available "
+    "actions and \"help\" for further details regarding available options. Type \"exit\" "
+    "to shut down the program." << endl;
+  }
+  cout << endl << "PLEASE INPUT YOUR SELECTED OPTION TO PROCEED: " << endl;
+}
+
+// INPUT : A command the user wishes to inquire further about
+// OUTPUT : Gives further detail on the function and input style of the command.
+void help(string str);
 
 // Displays all available commands to the user.
 void options() {
@@ -29,7 +40,7 @@ void options() {
 }
 
 // Makes the input string all lowercase characters
-// Error handling in case of wrong user input
+// Error handling in case of incorrect user input
 void lowercase(string &str) {
   for (int i = 0; i < str.length(); i++) {
     str[i] = tolower(str[i]);
@@ -37,6 +48,7 @@ void lowercase(string &str) {
 }
 
 int main() {
+  initialize_list();
   string option;
   intro(0);
 
@@ -55,6 +67,9 @@ int main() {
       continue;
     }
     //rest of the functions insert here
+    else if (option == "search") {
+      
+    }
 
     else if (option == "exit") {
       cout << endl << "// Thank you for using the program, this program has now ended. //" << endl;
