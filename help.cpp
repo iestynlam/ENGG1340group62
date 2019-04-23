@@ -1,3 +1,7 @@
+#include <iostream>
+#include <string>
+using namespace std;
+
 void help(string str) {
   if (str == "options") {
     cout << "Used to view all available user commands.";
