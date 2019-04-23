@@ -13,6 +13,17 @@ struct commodity {
   commodity* next // setting up linked list
 } ;
 
+int main() {
+  int n;
+  cin >> n;
+  commodity * set = new commodity[n];
+  for (int i = 0; i < n; i++) {
+    cin >> set[i].name >> set[i].manuf >> set[i].qty;
+    cout << "next" <<endl;
+  }
+  out_array(set);
+}
+
 void out_array(commodity a[]) {
   for (int i = 0; i < a.size(); i++) {
     cout << a[i].name << "\tManufacturer: " << a[i].manuf <<
