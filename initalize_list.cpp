@@ -6,6 +6,7 @@
 using namespace std;
 
 const string filename = "inventory.txt";
+
 // Struct used to hold details of all commodities. [FOR REFERENCE]
 // Not sure if this is actually necessary if its all compiled together
 struct commodity {
@@ -34,19 +35,6 @@ void appendCommodity(commodity* &head, string name, string manuf, int qty) {
       }
       cursor = cursor->next;
     }
-  }
-}
-
-void printCar(commodity* &head) {
-  commodity* current = head;
-  while (current != NULL) {
-    if (current->next != NULL) {
-      cout << current->name << ",";
-    }
-    else {
-      cout << current->name;
-    }
-    current = current->next;
   }
 }
 

@@ -21,6 +21,9 @@ void help(string str) {
   else if (str == "exit") {
     cout << "Terminates the program.";
   }
+  else if (str == "edit") {
+    cout << "Edit details of an existing commodity.";
+  }
   else if (str == "display") {
     cout << "Displays all items currently in the system, along with";
     " associated information."

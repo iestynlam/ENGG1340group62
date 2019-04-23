@@ -41,7 +41,7 @@ void help(string str);
 // Displays all available commands to the user.
 void options() {
   cout << "Available commands are:\nsearch, insert, delete, "
-  "display, options, help, exit." << endl << endl;
+  "edit, display, options, help, exit." << endl << endl;
 }
 
 // Makes the input string all lowercase characters
@@ -60,10 +60,15 @@ void out_array(commodity a[], int n);
 // clears any dynamically allocated memory before ending the program to prevent memory leak
 void end_program();
 
+// RETURN: A commodity struct with name, manufacturer, and quantity.
+commodity insert();
+
 /* Using file I/O and a reference to a 'inventory.txt' to keep track of all items even when program has been terminated
 This program opens the file (or creates a new one if it doesnt exist) and creates a linked list which will be used whilst
 the program runs.*/
-void initialize_list(commodity* head,string filename);
+void initialize_list(commodity* &head,string filename);
+
+void append_commodity(commodity* &head, str name, str manuf, int qty);
 
 int main() {
   commodity* head = NULL;
@@ -87,21 +92,32 @@ int main() {
       continue;
     }
     else if (option == "search") {
-
+      // give parameters for what can be searched for - name/manuf/qty
+      // error handling for user input on search (for strings only)
+      // qty search is in-stock/out of stock (remember to do lowercase)
+      // pass dynamically allocated array to out_array
     }
     else if (option == "display") {
-
+      // prompt user to ask what they want to sort by - last updated (? might be difficult),
+      // quantity, alphabetical name, alphabetical manufacturer
+      // pass a dynamically allocated array to out_array
+    }
+    else if (option == "edit") {
+      // search for item and get pointer to the desired item - needs ERROR HANDLING
+      // asks what values to change, '-' for unchanged
     }
     else if (option == "insert") {
-
+      commodity new_item = insert(); // INSERT TO BE IMPLEMENTED, ERROR HANDLING IF ITEM ALREADY EXISTS
+      append_item(head, new_item.name, new_item.manuf, new_item.qty); // APPEND_ITEM TO BE IMPLEMENTED
     }
     else if (option == "delete") {
-
+      // search for item - error handling
+      // final promt (Y/N) - then "this item has been deleted".
     }
 
     else if (option == "exit") {
       cout << endl << "// Thank you for using the program, this program has now ended. //" << endl;
-      //end_program(); - NOT YET IMPLEMENTED
+      end_program(); // TO BE IMPLEMENTED
       break;
     }
     intro(1);
