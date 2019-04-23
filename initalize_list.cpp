@@ -21,6 +21,7 @@ void appendCommodity(commodity* &head, string name, string manuf, int qty) {
   a->manuf = manuf;
   a->qty = qty;
   a->next = NULL;
+  cout << "succeeding" << endl;
 
   if (head==NULL) {
     head = a;
@@ -53,20 +54,20 @@ void printCar(commodity* &head) {
 // this program currently assumes that all strings have no spaces - will probably need to be updated to accept spaces,
 // or identifiers can have specific requiremetns (no spaces, however search functions will account for spaces and replace with underscores)
 void initialize_list(commodity* &head, string filename) {
-  int count = 0, qty;
+  int count, qty;
   ifstream fin (filename);
   string line, name, manuf;
   while (getline(fin,line)) {
-    count++;
-  }
-  for (int i = 0; i<count; i++) {
     fin >> name >> manuf >> qty;
+    cout << name << "//" << manuf << "//" << qty << endl;
+    appendCommodity(head,name,manuf,qty);
   }
-  appendCommodity(head, name, manuf, qty);
+  fin.close();
 } // void initialize_list //
 
 int main() {
   commodity* head = NULL;
   initialize_list(head, filename);
-  printCar(head);
+  cout << endl << endl;
+  //printCar(head);
 }
