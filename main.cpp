@@ -21,46 +21,8 @@ struct commodity {
   int qty; // good quantity
 } ;
 
-void intro(int x) {
-  if (x == 0) { // first intro message
-    cout << "// Welcome to the commodity manager! //" << endl << "\nType \"options\" to view available "
-    "actions and \"help\" for further details regarding available options. Type \"exit\" "
-    "to shut down the program." << endl;
-  }
-  cout << endl << "PLEASE INPUT YOUR SELECTED OPTION TO PROCEED: " << endl;
-}
+void intro(int x);
 
-// INPUT : A command the user wishes to inquire further about
-// OUTPUT : Gives further detail on the function and input style of the command.
-void help(string str) {
-  if (str == "options") {
-    cout << "To view all available user commands.";
-  }
-  else if (str == "search") {
-    cout << "Used to search for commodities according to specific filters." << endl
-    << "Available filters are:" << endl << "filter 1, filter 2, etc";
-  }
-  else if (str == "insert") {
-    cout << "To insert a new commodity into the program.";
-  }
-  else if (str == "delete") {
-    cout << "To delete a commodity from the program.";
-  }
-  else if (str == "exit") {
-    cout << "Terminates the program.";
-  }
-  else if (str == "display") {
-    cout << "Displays all items currently in the system, along with"
-    " associated information.";
-  }
-  else if (str == "help") {
-    cout << "Provides further details on the functions of available commands.";
-  }
-  else {
-    cout << str << " is not a valid command.";
-  }
-  cout << endl;
-}
 // Displays all available commands to the user.
 void options() {
   cout << "Available commands are:\nsearch, insert, delete, \n"
