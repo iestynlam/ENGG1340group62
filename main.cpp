@@ -19,7 +19,7 @@ struct commodity {
   string name; // name of commodity
   string manuf; // name of manufacturer
   int qty; // quantity of commodity
-  commodity* next // setting up linked list
+  commodity* next; // setting up linked list
 } ;
 
 // INTRODUCTORY MESSAGE & MESSAGES INDICATING USER CAN PROCEED
@@ -50,7 +50,9 @@ void lowercase(string &str) {
   }
 }
 
-
+// INPUT : array of commodity structs, number of elements in the array
+// OUTPUT : Prints out the commodities in order with accompanying details
+void out_array(commodity a[], int n);
 
 int main() {
   commodity* head = NULL; /*beginning a linked list to hold data on all the
