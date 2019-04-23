@@ -104,6 +104,7 @@ int main() {
     }
     else if (option == "edit") {
       // search for item and get pointer to the desired item - needs ERROR HANDLING
+      // print out current values
       // asks what values to change, '-' for unchanged
     }
     else if (option == "insert") {
