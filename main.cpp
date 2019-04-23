@@ -17,9 +17,12 @@ Program Features:
 // Struct used to hold details of all commodities.
 struct commodity {
   string name; // name of commodity
-  int qty; // good quantity
+  string manuf; // name of manufacturer
+  int qty; // quantity of commodity
+  commodity* next // setting up linked list
 } ;
 
+// INTRODUCTORY MESSAGE & MESSAGES INDICATING USER CAN PROCEED
 void intro(int x) {
   if (x == 0) { // first intro message
     cout << "// Welcome to the commodity manager! //" << endl << "\nType \"options\" to view available "
@@ -47,11 +50,16 @@ void lowercase(string &str) {
   }
 }
 
+
+
 int main() {
-  initialize_list();
+  commodity* head = NULL; /*beginning a linked list to hold data on all the
+  commodities until program end*/
+  initialize_list(head,filename);
   string option;
   intro(0);
 
+// loop to take in user input
   while (getline(cin,option)) {
     lowercase(option);
     cout << option << endl;
@@ -68,7 +76,7 @@ int main() {
     }
     //rest of the functions insert here
     else if (option == "search") {
-      
+
     }
 
     else if (option == "exit") {
