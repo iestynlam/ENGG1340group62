@@ -1,4 +1,3 @@
-// main but designed by me lmfao
 #include <iostream>
 #include <string>
 using namespace std;
