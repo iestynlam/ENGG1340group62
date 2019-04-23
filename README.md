@@ -21,6 +21,7 @@ Our program will be aimed to solve the issue of inventory management and trackin
 
 7. Overflowing alert - if a commodity remains in stock for a very long time, there may be a danger of expiry or change in sale policy. (Concept of first-in-first-out / first-in-late-out)
 8. Provide statistics on rate of consumption/sale of each commodity based on data entered by staff, to help management predict how much they would need to procure to continue to match demand.
+9. Error handling - basic error handling such as being case-sensitive, or if the user doesn't type the entire name of the commodities - enters invalid data types into certain fields.
 
 ## Problem Setting:
 This program will be set up to be used in retail stores such as supermarkets, clothing stores, sporting chains, restaurants - etc. This will allow for management to be able to provide up-to-date information of what commodities are in-stock an out-of-stock just by one click, what are the potential commodities might be running out faster than other commodities, and when they will have to order more commodity to keep the store well stocked.
