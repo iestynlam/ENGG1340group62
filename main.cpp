@@ -2,7 +2,7 @@
 #include <string>
 using namespace std;
 
-const string filename = "inventory.txt"
+const string filename = "inventory.txt";
 
 /*
 Program Features:
@@ -40,7 +40,7 @@ void help(string str);
 
 // Displays all available commands to the user.
 void options() {
-  cout << "Available commands are:\nsearch, insert, delete, \n"
+  cout << "Available commands are:\nsearch, insert, delete, "
   "display, options, help, exit." << endl << endl;
 }
 
@@ -57,7 +57,7 @@ void lowercase(string &str) {
 // Purpose : used to output arrays of items to the screen for the user to see
 void out_array(commodity a[], int n);
 
-// clears any dynamic memory before ending the program to prevent memory leak
+// clears any dynamically allocated memory before ending the program to prevent memory leak
 void end_program();
 
 /* Using file I/O and a reference to a 'inventory.txt' to keep track of all items even when program has been terminated
@@ -67,7 +67,7 @@ void initialize_list(commodity* head,string filename);
 
 int main() {
   commodity* head = NULL;
-  initialize_list(head,filename);
+  //initialize_list(head,filename);
 
   string option;
   intro(0);
@@ -75,7 +75,6 @@ int main() {
 // While loop to take in user input until program end
   while (getline(cin,option)) {
     lowercase(option);
-    cout << option << endl;
     if (option == "options") {
       cout << endl;
       options();
@@ -87,14 +86,22 @@ int main() {
       help(option);
       continue;
     }
-    //rest of the functions insert here
     else if (option == "search") {
+
+    }
+    else if (option == "display") {
+
+    }
+    else if (option == "insert") {
+
+    }
+    else if (option == "delete") {
 
     }
 
     else if (option == "exit") {
       cout << endl << "// Thank you for using the program, this program has now ended. //" << endl;
-      end_program();
+      //end_program(); - NOT YET IMPLEMENTED
       break;
     }
     intro(1);

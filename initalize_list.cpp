@@ -69,5 +69,5 @@ int main() {
   commodity* head = NULL;
   initialize_list(head, filename);
   cout << endl << endl;
-  //printCar(head);
+  printCar(head);
 }

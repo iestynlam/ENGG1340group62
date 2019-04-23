@@ -1,3 +1,5 @@
+// stores all the information of the various commands in the program
+
 #include <iostream>
 #include <string>
 using namespace std;
@@ -17,14 +19,14 @@ void help(string str) {
     cout << "To delete a commodity from the program.";
   }
   else if (str == "exit") {
-    cout << "Terminates the program."
+    cout << "Terminates the program.";
   }
   else if (str == "display") {
-    cout << "Displays all items currently in the system, along with"
+    cout << "Displays all items currently in the system, along with";
     " associated information."
   }
   else if (str == "help") {
-    cout << "Provides further details on the functions of available commands."
+    cout << "Provides further details on the functions of available commands.";
   }
   else {
     cout << str << " is not a valid command.";
