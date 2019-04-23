@@ -2,6 +2,8 @@
 #include <string>
 using namespace std;
 
+const string filename = "inventory.txt"
+
 /*
 Program Features:
 - search commodities
@@ -52,16 +54,25 @@ void lowercase(string &str) {
 
 // INPUT : array of commodity structs, number of elements in the array
 // OUTPUT : Prints out the commodities in order with accompanying details
+// Purpose : used to output arrays of items to the screen for the user to see
 void out_array(commodity a[], int n);
 
+// clears any dynamic memory before ending the program to prevent memory leak
+void end_program();
+
+/* Using file I/O and a reference to a 'inventory.txt' to keep track of all items even when program has been terminated
+This program opens the file (or creates a new one if it doesnt exist) and creates a linked list which will be used whilst
+the program runs.*/
+void initialize_list(commodity* head,string filename);
+
 int main() {
-  commodity* head = NULL; /*beginning a linked list to hold data on all the
-  commodities until program end*/
+  commodity* head = NULL;
   initialize_list(head,filename);
+
   string option;
   intro(0);
 
-// loop to take in user input
+// While loop to take in user input until program end
   while (getline(cin,option)) {
     lowercase(option);
     cout << option << endl;
@@ -83,6 +94,7 @@ int main() {
 
     else if (option == "exit") {
       cout << endl << "// Thank you for using the program, this program has now ended. //" << endl;
+      end_program();
       break;
     }
     intro(1);
