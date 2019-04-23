@@ -1,6 +1,6 @@
 // reads user input and passes it to a commodity type struct to be appended to the linked list
-// error handling if item already exists
-// insert an escape if the user no longer wishes to enter a new item.
+// error handling if item already exists or if invalid input for qty field
+// TO DO : insert an escape if the user no longer wishes to enter a new item.
 #include <iostream>
 #include <string>
 #include <cmath>
