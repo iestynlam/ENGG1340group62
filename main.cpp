@@ -74,7 +74,7 @@ void append_item(commodity* &head, string name, string manuf, int qty);
 // FUNCTION: Reads user input, allows them to search by name/manufacturer for the item they're
 // looking for, has error-handling if the user fails to type a full name.
 // RETURN: A pointer to the matching target
-commodity* find(commodity* &head);
+commodity* find_item(commodity* &head);
 
 int main() {
   commodity* head = NULL;
