@@ -26,9 +26,6 @@ void end_program(commodity* &head) {
   fout_0.close();
   // printing linked list into 'inventory.tct'
   ofstream fout_1 (filename);
-  // try figure out a way to redirect cout from print_list into 'inventory.txt', something involving
-  // rdbuf streambuf? not too sure lol i don't understand stack overflow so im just pasting code for now
-  // try to replace with code that redirects print_list()'s output into the file
   commodity* current= head;
   while (current!=NULL) {
     fout_1 << current->name << " " << current->manuf << " " << current->qty << endl;
