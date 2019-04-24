@@ -1,4 +1,4 @@
-// CURRENTLY BUGGED, LOTS OF EXTRA FUNCTIONS PASTED HERE FOR TESTING PURPOSES
+// fetches data from inventory.txt and creates a linked list which will be used in the program
 
 #include <iostream>
 #include <fstream>

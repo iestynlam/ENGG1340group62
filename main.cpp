@@ -74,7 +74,7 @@ void append_item(commodity* &head, str name, str manuf, int qty);
 
 int main() {
   commodity* head = NULL;
-  //initialize_list(head,filename);
+  initialize_list(head,filename);
 
   string option;
   intro(0);
