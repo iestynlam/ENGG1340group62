@@ -7,32 +7,23 @@ using namespace std;
 
 const string filename = "inventory.txt";
 
-// Struct used to hold details of all commodities. [FOR REFERENCE]
-// Not sure if this is actually necessary if its all compiled together
-struct commodity {
-  string name; // name of commodity
-  string manuf; // name of manufacturer
-  int qty; // quantity of commodity
-  commodity* next; // setting up linked list
-} ;
-
-// Loops through each line of the file and takes the information and inputs it into a linked list.
-// this program currently assumes that all strings have no spaces - will probably need to be updated to accept spaces,
-// or identifiers can have specific requiremetns (no spaces, however search functions will account for spaces and replace with underscores)
 void initialize_list(commodity* &head, string filename) {
-  int count, qty;
-  ifstream fin (filename);
-  string line, name, manuf;
-  while (getline(fin,line)) {
-    fin >> name >> manuf >> qty;
-    cout << name << "//" << manuf << "//" << qty << endl;
-    appendCommodity(head,name,manuf,qty);
+  int count=0;
+  commodity item;
+  string line;
+  ifstream fin0 (filename);
+  // count how many line are in the file so it knows how many times to loop,
+  // there's probably a better way to do this but it works at least
+  while (getline(fin0,line)) {
+    count++;
   }
-  fin.close();
-} // void initialize_list //
+  fin0.close();
 
-int main() {
-  commodity* head = NULL;
-  initialize_list(head, filename);
-  cout << endl << endl;
-}
+  ifstream fin1;
+  fin1.open(filename);
+  for (int i = 0; i<count; i++) {
+    fin1 >> item.name >> item.manuf >> item.qty;
+    append_item(head, item.name, item.manuf, item.qty);
+  }
+  fin1.close();
+} // void initialize_list //
