@@ -117,11 +117,13 @@ int main() {
       // search for item - error handling
       // final promt (Y/N) - then "this item has been deleted".
     }
-
     else if (option == "exit") {
       cout << endl << "// Thank you for using the program, this program has now ended. //" << endl;
       end_program(); // TO BE IMPLEMENTED
       break;
+    }
+    else {
+      cout << option << "is not a valid command. Type 'options' to view what commands are available.\n";
     }
     intro(1);
   }
