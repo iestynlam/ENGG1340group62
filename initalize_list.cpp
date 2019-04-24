@@ -16,28 +16,6 @@ struct commodity {
   commodity* next; // setting up linked list
 } ;
 
-void appendCommodity(commodity* &head, string name, string manuf, int qty) {
-  commodity* a = new commodity;
-  a->name = name;
-  a->manuf = manuf;
-  a->qty = qty;
-  a->next = NULL;
-  cout << "succeeding" << endl;
-
-  if (head==NULL) {
-    head = a;
-  }
-  else {
-    commodity* cursor = head;
-    while (cursor!=NULL) {
-      if (cursor->next==NULL) {
-        cursor->next = a;
-      }
-      cursor = cursor->next;
-    }
-  }
-}
-
 // Loops through each line of the file and takes the information and inputs it into a linked list.
 // this program currently assumes that all strings have no spaces - will probably need to be updated to accept spaces,
 // or identifiers can have specific requiremetns (no spaces, however search functions will account for spaces and replace with underscores)
@@ -57,5 +35,4 @@ int main() {
   commodity* head = NULL;
   initialize_list(head, filename);
   cout << endl << endl;
-  printCar(head);
 }

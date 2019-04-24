@@ -110,8 +110,9 @@ int main() {
     else if (option == "insert") {
       commodity new_item = insert(); // INSERT TO BE IMPLEMENTED, ERROR HANDLING IF ITEM ALREADY EXISTS
       if (new_item.name != "") { // EMPTY STRING RETURNED IF THE PROCESS IS CANCELLED
-        append_item(head, new_item.name, new_item.manuf, new_item.qty);  // APPEND_ITEM TO BE IMPLEMENTED
+        append_item(head, new_item.name, new_item.manuf, new_item.qty);
       }
+      continue;
     }
     else if (option == "delete") {
       // search for item - error handling
