@@ -58,17 +58,19 @@ void lowercase(string &str) {
 void out_array(commodity a[], int n);
 
 // clears any dynamically allocated memory before ending the program to prevent memory leak
-void end_program();
+void end_program(commodity* &head);
 
+// INPUT: head of the linked list to be able to check if item already exists
 // RETURN: A commodity struct with name, manufacturer, and quantity.
-commodity insert();
+commodity insert(commodity* &head);
 
 /* Using file I/O and a reference to a 'inventory.txt' to keep track of all items even when program has been terminated
 This program opens the file (or creates a new one if it doesnt exist) and creates a linked list which will be used whilst
 the program runs.*/
 void initialize_list(commodity* &head,string filename);
 
-void append_commodity(commodity* &head, str name, str manuf, int qty);
+// adds item to the end of linked list
+void append_item(commodity* &head, str name, str manuf, int qty);
 
 int main() {
   commodity* head = NULL;
@@ -120,7 +122,7 @@ int main() {
     }
     else if (option == "exit") {
       cout << endl << "// Thank you for using the program, this program has now ended. //" << endl;
-      end_program(); // TO BE IMPLEMENTED
+      end_program(head); // TO BE IMPLEMENTED
       break;
     }
     else {
