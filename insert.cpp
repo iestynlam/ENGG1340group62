@@ -23,19 +23,27 @@ commodity insert(commodity* &head) {
   string str_input;
 
   cout << "A new item will be entered into the system. Please provide the required details.\n"
-  "If the manufacturer is unavailable, please enter \"0\"." << endl;
+  "If the manufacturer is unavailable, please enter \"-\"." << endl;
   cout << "NAME: ";
 
-  cin >> str_input;
+  getline(cin,str_input);
+  fill_spaces(str_input); // function to fill any spaces with '_', probably will be used elsewhere in the program for searches and such
+
   while (item_exists(head, str_input)) {
-    cout << "This name already exists in the system. Please enter a different name.\nNAME: "
-    cin >> str_input;
+    cout << "This name already exists in the system. Please enter a different name. If you would like to cancel this addition, enter \"-\"\nNAME: ";
+    getline(cin,str_input);
+    fill_spaces(str_input);
+    if (str_input == "-") {
+      cout << "New addition cancelled." << endl;
+      return new_item;
+    }
   }
   new_item.name = str_input;
 
   cout << "MANUFACTURER: ";
-  cin >> str_input;
-  if (str_input == "0") {
+  getline(cin,str_input);
+  fill_spaces(str_input);
+  if (str_input == "-") {
     new_item.manuf = "[n/a]]";
   }
   else {
@@ -44,7 +52,7 @@ commodity insert(commodity* &head) {
 
 // error handling if user inputs words instead of numbers
   cout << "QUANTITY: ";
-  cin >> str_input;
+  cin >> str_input; // no need for getline because no spaces for an int
   while (digit_check(str_input)) {
     cout << "QUANTITY: ";
     cin >> str_input;
