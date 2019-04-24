@@ -70,7 +70,11 @@ the program runs.*/
 void initialize_list(commodity* &head,string filename);
 
 // adds item to the end of linked list
-void append_item(commodity* &head, str name, str manuf, int qty);
+void append_item(commodity* &head, string name, string manuf, int qty);
+
+// find will be used to get the right target, search by name/manufacturer
+// returns a pointer to the matching target
+commodity* find(commodity* &head, string target);
 
 int main() {
   commodity* head = NULL;
