@@ -4,7 +4,8 @@
 #include <string>
 using namespace std;
 
-void help(string str) {
+void help(string userin) {
+  string str = lowercase(userin);
   if (str == "options") {
     cout << "Used to view all available user commands.";
   }
@@ -32,7 +33,7 @@ void help(string str) {
     cout << "Provides further details on the functions of available commands.";
   }
   else {
-    cout << str << " is not a valid command.";
+    cout << userin << " is not an available command. Type 'options' to view the available commands.";
   }
   cout << endl;
 }

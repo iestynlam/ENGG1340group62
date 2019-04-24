@@ -7,7 +7,7 @@ using namespace std;
 bool item_exists(commodity* &head, string item_name) {
   commodity* current = head;
   while (current!=NULL) {
-    if (current->name == item_name) {
+    if (lowercase(current->name) == lowercase(item_name)) {
       return true;
     }
     current = current->next;

@@ -44,13 +44,10 @@ void options() {
   "edit, display, options, help, exit." << endl << endl;
 }
 
-// Makes the input string all lowercase characters
-// Error handling in case of incorrect user input
-void lowercase(string &str) {
-  for (int i = 0; i < str.length(); i++) {
-    str[i] = tolower(str[i]);
-  }
-}
+// INPUT: String of any length
+// RETURN: String with all alphabetical characters converted into lowercase
+// Error handling in case of variance in user input
+string lowercase(string str);
 
 // INPUT : array of commodity structs, number of elements in the array
 // OUTPUT : Prints out the commodities in order with accompanying details
@@ -73,28 +70,31 @@ void initialize_list(commodity* &head,string filename);
 void append_item(commodity* &head, string name, string manuf, int qty);
 
 // find will be used to get the right target, search by name/manufacturer
-// returns a pointer to the matching target
-commodity* find(commodity* &head, string target);
+// INPUT: Pointer to head of linked list to be able to search through
+// FUNCTION: Reads user input, allows them to search by name/manufacturer for the item they're
+// looking for, has error-handling if the user fails to type a full name.
+// RETURN: A pointer to the matching target
+commodity* find(commodity* &head);
 
 int main() {
   commodity* head = NULL;
   initialize_list(head,filename);
 
-  string option;
+  string option, userin;
   intro(0);
 
 // While loop to take in user input until program end
-  while (getline(cin,option)) {
-    lowercase(option);
+  while (getline(cin,userin)) {
+    option = lowercase(userin);
+    // separate userin and option so that error messages match case with input
     if (option == "options") {
       cout << endl;
       options();
     }
     else if (option == "help") {
       cout << "Which option would you like further details on?" << endl;
-      cin >> option;
-      lowercase(option);
-      help(option);
+      cin >> userin;
+      help(userin);
       continue;
     }
     else if (option == "search") {
@@ -130,7 +130,7 @@ int main() {
       break;
     }
     else {
-      cout << option << "is not a valid command. Type 'options' to view what commands are available.\n";
+      cout << userin << " is not an available command. Type 'options' to view the available commands.\n";
     }
     intro(1);
   }
