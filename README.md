@@ -10,6 +10,7 @@
 - Commodity - the 'commodity' we are using in this program has three data fields - Name/Identifier of the item, Manufacturer/Vendor of the item & Quantity of item.
 - 'inventory.txt' will be used as the database of the program and is where details regarding the inventory is stored when the program closes, so that the program can be closed and re-opened as necessary. In 'inventory.txt', each commodity is separated by a line, and each data field of the commodity is separated by a space.
 - ASSUMPTIONS ON FORMAT: For both manufacturers and item names, within the database they have no spaces and are instead replaced with underscores.
+- OTHER NOTE: 's_' prefix statements are meant to just be used within the program, there is no error handling for input and the input to those functions must be perfect.
 
 ## Problem Statement:
 Our program will be aimed to solve the issue of inventory management and tracking. Many brands and stores such as supermarkets need a way to manage their inventory and know what items are in stock and out of stock, and which items are close to potentially running out soon. In order to provide a solution for this issue, our program will allow staff to record and manage commodity inventory in different retail shops in order to keep track of inventory, as well as receiving alerts when items are running out of stock or have run out of stock.

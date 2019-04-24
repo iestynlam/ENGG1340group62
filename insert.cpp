@@ -1,6 +1,5 @@
-// reads user input and passes it to a commodity type struct to be appended to the linked list
-// error handling if item already exists or if invalid input for qty field
-// TO DO : insert an escape if the user no longer wishes to enter a new item.
+// NEEDS TO BE REVAMPED, give error message and error processing at the end, return NULL if user decides
+// to abandon process.
 #include <iostream>
 #include <string>
 #include <cmath>
@@ -27,12 +26,12 @@ commodity insert(commodity* &head) {
   cout << "NAME: ";
 
   getline(cin,str_input);
-  fill_spaces(str_input); // function to fill any spaces with '_', probably will be used elsewhere in the program for searches and such
+  str_input = lowercase(fill_spaces(str_input)); // function to fill any spaces with '_', probably will be used elsewhere in the program for searches and such
 
   while (item_exists(head, str_input)) {
     cout << "This name already exists in the system. Please enter a different name. If you would like to cancel this addition, enter \"-\"\nNAME: ";
     getline(cin,str_input);
-    fill_spaces(str_input);
+    str_input = fill_spaces(str_input);
     if (str_input == "-") {
       cout << "New addition cancelled." << endl;
       return new_item;

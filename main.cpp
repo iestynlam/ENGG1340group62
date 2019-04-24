@@ -69,13 +69,6 @@ void initialize_list(commodity* &head,string filename);
 // adds item to the end of linked list
 void append_item(commodity* &head, string name, string manuf, int qty);
 
-// find will be used to get the right target, search by name/manufacturer
-// INPUT: Pointer to head of linked list to be able to search through
-// FUNCTION: Reads user input, allows them to search by name/manufacturer for the item they're
-// looking for, has error-handling if the user fails to type a full name.
-// RETURN: A pointer to the matching target
-commodity* find_item(commodity* &head);
-
 int main() {
   commodity* head = NULL;
   initialize_list(head,filename);
@@ -109,9 +102,9 @@ int main() {
       // pass a dynamically allocated array to out_array
     }
     else if (option == "edit") {
-      // search for item and get pointer to the desired item - needs ERROR HANDLING
-      // print out current values
-      // asks what values to change, '-' for unchanged
+      cout << "Please enter the name of the item you wish to edit.\n";
+      commodity* target = find_by_name(head);
+      edit_item(target);
     }
     else if (option == "insert") {
       commodity new_item = insert(); // INSERT TO BE IMPLEMENTED, ERROR HANDLING IF ITEM ALREADY EXISTS
@@ -121,7 +114,17 @@ int main() {
       continue;
     }
     else if (option == "delete") {
-      // search for item - error handling
+      cout << "Please enter the name of the item you wish to delete.\n";
+      commodity* target = find_by_name(head);
+      cout << "Are you sure you wish to delete the item: " << target->name << "? (Y/N)\n";
+      char confirm;
+      cin >> confirm;
+      if (confirm=='Y') {
+        delete_item(head, target); //not working
+      }
+      else {
+        cout << "Action not executed.\n";
+      }
       // final promt (Y/N) - then "this item has been deleted".
     }
     else if (option == "exit") {
