@@ -11,10 +11,10 @@ bool digit_check(string str_input) {
   for (int i = 0; i < str_input.length() ; i++) {
     if (isdigit(str_input[i]) == false) {
       cout << "Only integers can be entered for this field. Please enter a valid input." << endl;
-      return true;
+      return false;
     }
   }
-  return false;
+  return true;
 }
 
 commodity insert(commodity* &head) {
@@ -52,7 +52,7 @@ commodity insert(commodity* &head) {
 // error handling if user inputs words instead of numbers
   cout << "QUANTITY: ";
   cin >> str_input; // no need for getline because no spaces for an int
-  while (digit_check(str_input)) {
+  while (digit_check(str_input)==false) {
     cout << "QUANTITY: ";
     cin >> str_input;
   }
