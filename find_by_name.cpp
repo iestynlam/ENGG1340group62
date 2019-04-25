@@ -9,18 +9,21 @@ string fill_spaces(string str);
 string lowercase(string str);
 
 commodity* find_by_name(commodity* &head) {
-  string userin;
-  cin >> userin;
+  string userin, target;
+  while (userin.length()==0) {
+    getline(cin,userin);
+  }
+  target = fill_spaces(lowercase(userin));
 
   //loop through linked list to find number of matching item(s)
   int count = 0, substr_no = 0;
   commodity* current = head;
   while(current->next!=NULL) {
   // partial name input error handling, multiple items with same name
-    if (lowercase(current->name)==userin) {
+    if (lowercase(current->name)==target) {
       count++;
     }
-    else if (lowercase(current->name).find(userin) != -1) {
+    else if (lowercase(current->name).find(target) != -1) {
       substr_no++;
     }
     current = current->next;
@@ -40,7 +43,7 @@ commodity* find_by_name(commodity* &head) {
   }
   //case of single perfect match, no substrings
   else if (count == 1 && substr_no == 0) {
-    return s_find_by_name(head, userin);
+    return s_find_by_name(head, target);
   }
   //any form of multiple results- THIS IS REALLY BROKEN
   else {
@@ -73,9 +76,9 @@ commodity* find_by_name(commodity* &head) {
     int choice;
     cin >> choice;
 
-    current = &set[choice - 1];
-    // free(set); (I don't really know what it mean so please double check if u wanna use it, function works fine without it)
-    //inserting delete[] set here causes issues when selecting first variable? unsure if free works.
+    current = &set[choice -1];
+    free(set);
+    //free should supposedly free any allocated memory
     return current;
   } // any form of multiple results
 }
