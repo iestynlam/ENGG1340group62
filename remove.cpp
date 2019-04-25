@@ -50,5 +50,6 @@ void remove(commodity* &head, commodity* target) {
     print_item(current);
     current = current->next;
   }
+  update_file(head, filename);
 }
 // After removal need to update the inventory.txt

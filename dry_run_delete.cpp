@@ -152,6 +152,20 @@ void initialize_list(commodity* &head, string filename) {
   fin1.close();
 } // void initialize_list //
 
+// To update the inventory.txt when called
+void update_file(commodity* &head, string filename) {
+  ofstream ostream;
+  string line;
+  commodity* &current = head;
+  ostream.open(filename);
+  while (current -> next != NULL){
+    ostream << current -> name << ' ' << current -> manuf << ' ' << current -> qty << endl;
+    current = current -> next;
+  }
+  ostream << current -> name << ' ' << current -> manuf << ' ' << current -> qty;
+  ostream.close();
+}
+
 // INPUT: A head pointer and a target pointer
 // Remove targeted commodity from list
 // And relinked!!
@@ -204,6 +218,7 @@ void remove(commodity* &head, commodity* target) {
     print_item(current);
     current = current->next;
   }
+  update_file(head, filename);
 }
 // After removal need to update the inventory.txt
 
