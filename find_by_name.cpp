@@ -38,7 +38,6 @@ commodity* find_by_name(commodity* &head) {
   else if (count == 1 && substr_no == 0) {
     return s_find_by_name(head, target);
   }
-  //any form of multiple results- THIS IS REALLY BROKEN
   else {
     int n = count+substr_no;
     // dynamically allocated set being declared
@@ -66,8 +65,13 @@ commodity* find_by_name(commodity* &head) {
     cin >> choice;
 
     current = &set[choice -1];
-    free(set);
-    //free should supposedly free any allocated memory
-    return current;
+    commodity* current2 = head;
+    while(current2->next!=NULL) {
+      if (current2->name==current->name && current2->manuf==current->manuf && current2->qty==current->qty) {
+        delete[] set;
+        return current2;
+      }
+      current2 = current2->next;
+    }
   } // any form of multiple results
 }

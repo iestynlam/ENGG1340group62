@@ -36,13 +36,13 @@ void end_program(commodity* &head) {
   // cleaning up memory - not certain if this is working [needs checking]
   current = head;
   //loops until only the head is left
-  while (current->next!=NULL) {
-    //loop until the last item in linked list
-    while (current->next!=NULL) {
-      current = current->next;
-    }
-    // deletes item
-    delete current;
+  if (head->next==NULL) {
+    delete head;
   }
-  delete head;
+
+  while (current->next!=NULL) {
+    head = head->next;
+    delete current;
+    current = head;
+  }
 }
