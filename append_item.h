@@ -1,4 +1,5 @@
 // Appends a new commodity to the linked list of items, THIS WORKS
+using namespace std;
 
 void append_item(commodity* &head, string name, string manuf, int qty) {
   commodity* a = new commodity;

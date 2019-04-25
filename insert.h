@@ -1,8 +1,8 @@
 // NEEDS TO BE REVAMPED, give error message and error processing at the end, return NULL if user decides
 // to abandon process.
-#include <iostream>
-#include <string>
 #include <cmath>
+#include "fill_spaces.h"
+#include "item_exists.h"
 using namespace std;
 
 /* checks if all characters are digits to ensure input is an int. Returns true if not all

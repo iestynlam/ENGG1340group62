@@ -1,12 +1,16 @@
 // Deletes any dynamic memory that has been allocated in the program to avoid memory leak
 // Writes all updated information into 'inventory.txt', copies old items intp 'old_inventory.txt' for safekeeping
-
-#include <iostream>
 #include <fstream>
 using namespace std;
 
 const string filename = "inventory.txt";
 const string old_filename = "old_inventory.txt";
+struct commodity {
+  string name; // name of commodity
+  string manuf; // name of manufacturer
+  int qty; // quantity of commodity
+  commodity* next; // setting up linked list
+} ;
 /*
 - clears 'old_inventory.txt'
 - copies 'inventory.txt' into 'old_inventory.txt'

@@ -1,9 +1,9 @@
 #include <iostream>
 #include <string>
+#include "header.h"
 using namespace std;
 
-const string filename = "inventory.txt";
-
+// const string filename = "inventory.txt";
 /*
 Program Features:
 - search commodities
@@ -17,12 +17,15 @@ Program Features:
 */
 
 // Struct used to hold details of all commodities.
+
+/*
 struct commodity {
   string name; // name of commodity
   string manuf; // name of manufacturer
   int qty; // quantity of commodity
   commodity* next; // setting up linked list
 } ;
+*/
 
 // INTRODUCTORY MESSAGE & MESSAGES INDICATING USER CAN PROCEED
 void intro(int x) {
@@ -34,48 +37,11 @@ void intro(int x) {
   cout << endl << "PLEASE INPUT YOUR SELECTED OPTION TO PROCEED: " << endl;
 }
 
-// INPUT : A command the user wishes to inquire further about
-// OUTPUT : Gives further detail on the function and input style of the command.
-void help(string str);
-
 // Displays all available commands to the user.
 void options() {
   cout << "Available commands are:\nsearch, insert, delete, "
   "edit, display, options, help, exit." << endl << endl;
 }
-
-// INPUT: String of any length
-// RETURN: String with all alphabetical characters converted into lowercase
-// Error handling in case of variance in user input
-string lowercase(string str);
-
-// INPUT : array of commodity structs, number of elements in the array
-// OUTPUT : Prints out the commodities in order with accompanying details
-// Purpose : used to output arrays of items to the screen for the user to see
-void out_array(commodity a[], int n);
-
-// clears any dynamically allocated memory before ending the program to prevent memory leak
-void end_program(commodity* &head);
-
-// INPUT: head of the linked list to be able to check if item already exists
-// RETURN: A commodity struct with name, manufacturer, and quantity.
-commodity* insert(commodity* &head);
-
-/* Using file I/O and a reference to a 'inventory.txt' to keep track of all items even when program has been terminated
-This program opens the file (or creates a new one if it doesnt exist) and creates a linked list which will be used whilst
-the program runs.*/
-void initialize_list(commodity* &head,string filename);
-
-// adds item to the end of linked list
-void append_item(commodity* &head, string name, string manuf, int qty);
-
-// INPUT: pointer to the head
-// RETURN: A pointer to a specified commodity, namely, with the specified name
-commodity* find_by_name(commodity* &head);
-
-void edit_item(commodity* target);
-
-void delete_item(commodity* head, commodity* target);
 
 int main() {
   commodity* head = NULL;
@@ -115,9 +81,9 @@ int main() {
       edit_item(target);
     }
     else if (option == "insert") {
-      commodity* new_item = insert(head); // INSERT TO BE IMPLEMENTED, ERROR HANDLING IF ITEM ALREADY EXISTS
-      if (new_item -> name != "") { // EMPTY STRING RETURNED IF THE PROCESS IS CANCELLED
-        append_item(head, new_item -> name, new_item -> manuf, new_item -> qty);
+      commodity new_item = insert(head); // INSERT TO BE IMPLEMENTED, ERROR HANDLING IF ITEM ALREADY EXISTS
+      if (new_item.name != "") { // EMPTY STRING RETURNED IF THE PROCESS IS CANCELLED
+        append_item(head, new_item.name, new_item.manuf, new_item.qty);
       }
       continue;
     }
@@ -128,7 +94,7 @@ int main() {
       char confirm;
       cin >> confirm;
       if (confirm=='Y') {
-        remove(head, target); 
+        remove(head, target);
       }
       else {
         cout << "Action not executed.\n";

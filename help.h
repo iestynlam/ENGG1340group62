@@ -1,7 +1,6 @@
 // stores all the information of the various commands in the program
 
-#include <iostream>
-#include <string>
+#include "lowercase.h"
 using namespace std;
 
 void help(string userin) {
@@ -26,8 +25,8 @@ void help(string userin) {
     cout << "Edit details of an existing commodity. Allows you to change item name, manufacturer, and add/decrease/set quantity.";
   }
   else if (str == "display") {
-    cout << "Displays all items currently in the system, along with";
-    " associated information."
+    cout << "Displays all items currently in the system, along with" <<
+    " associated information.";
   }
   else if (str == "help") {
     cout << "Provides further details on the functions of available commands.";

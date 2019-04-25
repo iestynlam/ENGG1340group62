@@ -6,6 +6,7 @@ displays the current data of the item and provides options for what to change
 - change name
 - change manufacturer
 */
+using namespace std;
 
 void edit_item(commodity* &target) {
   cout << "Current Data:" << endl;

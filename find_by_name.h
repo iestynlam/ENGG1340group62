@@ -2,11 +2,10 @@
 // the same name but different manufacturer. Also handles the cases of substrings appearing.
 
 // problems with returend pointer when choosing between values?
-
-//DEPENDENCIES OF find_by_name
-commodity* s_find_by_name(commodity* &head, string target);
-string fill_spaces(string str);
-string lowercase(string str);
+#include "s_find_by_name.h"
+#include "fill_spaces.h"
+#include "lowercase.h"
+using namespace std;
 
 commodity* find_by_name(commodity* &head) {
   string userin, target;

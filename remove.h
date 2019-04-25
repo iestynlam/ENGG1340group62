@@ -1,6 +1,9 @@
 // INPUT: A head pointer and a target pointer
 // Remove targeted commodity from list
 // And relinked!!
+#include "update_file.h"
+using namespace std;
+
 void remove(commodity* &head, commodity* target) {
   // create two pointer pointing to the previous commodity and after one
   // Previous one => search from head

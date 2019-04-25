@@ -1,11 +1,10 @@
 // fetches data from inventory.txt and creates a linked list which will be used in the program
-
-#include <iostream>
 #include <fstream>
-#include <string>
+
 using namespace std;
 
-const string filename = "inventory.txt";
+//const string filename = "inventory.txt";
+
 
 void initialize_list(commodity* &head, string filename) {
   int count=0;
