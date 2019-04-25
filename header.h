@@ -1,18 +1,7 @@
-/*
-#include "help.h" ok
-#include "end_program.h" ok
-#include "insert.h" ok
-#include "initialize_list.h" ok
-#include "append_item.h" ok
-#include "find_by_name.h" ok
-#include "edit_item.h" ok
-#include "remove.h" ok
-*/
 #include <fstream>
 #include <cmath>
 #include "fill_spaces.h"
 #include "item_exists.h"
-//#include "lowercase.h"
 #include "s_find_by_name.h"
 #include "update_file.h"
 #include "print_item.h"
