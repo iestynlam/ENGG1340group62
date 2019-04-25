@@ -18,7 +18,7 @@ commodity* find_by_name(commodity* &head) {
   //loop through linked list to find number of matching item(s)
   int count = 0, substr_no = 0;
   commodity* current = head;
-  while(current->next!=NULL) {
+  while(current!=NULL) {
   // partial name input error handling, multiple items with same name
     if (lowercase(current->name)==target) {
       count++;
@@ -53,7 +53,7 @@ commodity* find_by_name(commodity* &head) {
     current = head;
     count = 0;
 
-    while(current->next!=NULL) {
+    while(current!=NULL) {
       if(lowercase(current->name).find(target) != -1) {
         set[count] = *current;
         count++;
@@ -78,7 +78,7 @@ commodity* find_by_name(commodity* &head) {
     // loops through to not return the copy but the original item in the linked list
     current = &set[choice -1];
     commodity* current2 = head;
-    while(current2->next!=NULL) {
+    while(current2!=NULL) {
       if (current2->name==current->name && current2->manuf==current->manuf && current2->qty==current->qty) {
         delete[] set;
         return current2;
