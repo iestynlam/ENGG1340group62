@@ -128,7 +128,7 @@ int main() {
       char confirm;
       cin >> confirm;
       if (confirm=='Y') {
-        delete_item(head, target); //not working
+        remove(head, target); 
       }
       else {
         cout << "Action not executed.\n";
