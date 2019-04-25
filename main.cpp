@@ -3,7 +3,6 @@
 #include "header.h"
 using namespace std;
 
-// const string filename = "inventory.txt";
 /*
 Program Features:
 - search commodities
@@ -14,17 +13,6 @@ Program Features:
 - deliver alerts when commodity is out of stock (error handling for too much minus)
 - overflow alerts?
 - stats on rate of consumption?
-*/
-
-// Struct used to hold details of all commodities.
-
-/*
-struct commodity {
-  string name; // name of commodity
-  string manuf; // name of manufacturer
-  int qty; // quantity of commodity
-  commodity* next; // setting up linked list
-} ;
 */
 
 // INTRODUCTORY MESSAGE & MESSAGES INDICATING USER CAN PROCEED
@@ -106,6 +94,7 @@ int main() {
       end_program(head); // TO BE IMPLEMENTED
       break;
     }
+    // If user enter wrong input
     else {
       cout << userin << " is not an available command. Type 'options' to view the available commands.\n";
     }
