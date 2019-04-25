@@ -46,6 +46,8 @@ int main() {
     if (option == "options") {
       cout << endl;
       options();
+      intro(1);
+      continue;
     }
     else {
       if (option == "help") {
@@ -68,6 +70,7 @@ int main() {
       // prompt user to ask what they want to sort by - last updated (? might be difficult),
       // quantity, alphabetical name, alphabetical manufacturer
       // pass a dynamically allocated array to out_array
+
       //continue => intro(1)
       }
     else {

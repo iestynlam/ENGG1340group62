@@ -1,24 +1,39 @@
 #include <fstream>
 #include <cmath>
 #include "fill_spaces.h"
-#include "item_exists.h"
+#include "item_exists.h" // Structure defined here
 #include "s_find_by_name.h"
 #include "update_file.h"
 #include "print_item.h"
 using namespace std;
 
-/*
-struct commodity {
-  string name; // name of commodity
-  string manuf; // name of manufacturer
-  int qty; // quantity of commodity
-  commodity* next; // setting up linked list
-} ;
-*/
 const string filename = "inventory.txt";
 const string old_filename = "old_inventory.txt";
 
+// Get an option from user and show detail of that
+void help(string userin);
+
+// End the program and update 2 inventory.txt
+void end_program(commodity* &head);
+
+// checks if all characters are digits to ensure input is an int. Returns true if not all
+// characters are digits and the main insert command prompts users to reenter a valid input.
+bool digit_check(string str_input);
+
+// Request information of a new item and add at the end of linked list
+commodity insert(commodity* &head);
+
+// creating linked list by inventory.txt
+void initialize_list(commodity* &head, string filename);
+
+//  Dependency of insert
 void append_item(commodity* &head, string name, string manuf, int qty);
+
+// Change information of an existing commodity
+void edit_item(commodity* &target);
+
+// Delete an existing commodity
+void remove(commodity* &head, commodity* target);
 
 void help(string userin) {
   string str = lowercase(userin);
@@ -54,13 +69,7 @@ void help(string userin) {
   cout << endl;
 }
 
-/*
-- clears 'old_inventory.txt'
-- copies 'inventory.txt' into 'old_inventory.txt'
-- clears 'inventory.txt'
-- writes linked list into 'inventory.txt'
-- clear linked list to clean up memory
-*/
+
 void end_program(commodity* &head) {
   // copy pasting inventory into old_inventory
   ifstream fin (filename);
@@ -94,8 +103,6 @@ void end_program(commodity* &head) {
   delete head;
 }
 
-/* checks if all characters are digits to ensure input is an int. Returns true if not all
-characters are digits and the main insert command prompts users to reenter a valid input.*/
 bool digit_check(string str_input) {
   for (int i = 0; i < str_input.length() ; i++) {
     if (isdigit(str_input[i]) == false) {
