@@ -93,7 +93,7 @@ commodity* find_by_name(commodity* &head) {
   else if (count == 1 && substr_no == 0) {
     return s_find_by_name(head, userin);
   }
-  //any form of multiple results- THIS IS REALLY BROKEN
+  //any form of multiple results
   else {
     int n = count+substr_no;
     cout << n << endl;
@@ -186,7 +186,8 @@ void remove(commodity* &head, commodity* target) {
 
   // CASE1 : for removing first item
   search = head;
-  if (search -> name == target -> name){
+  //(search -> name == target -> name) && (search -> manuf == target -> manuf)
+  if ((search -> name == target -> name) && (search -> manuf == target -> manuf)){
     head = head -> next;
   }
   // Connecting the head to the second item (second item becomes head) and update the file
@@ -194,15 +195,16 @@ void remove(commodity* &head, commodity* target) {
   // CASE2 : for removing middle item or last item (TESTED)
   else {
     // FINDING PREVIOUS
-    while (search -> next -> name != target -> name){ // (Actually I trying to use condition (search->next != target) but fail)
+    // (((search -> next -> name) != (target -> name)) && ((search -> next -> manuf) != (target -> manuf))
+    while ((((search -> next) -> name) != (target -> name)) || (((search -> next) -> manuf) != (target -> manuf))){
       search = search -> next;
     }
     previous = search;
-    // FIND "AFTER" IF TARGET IS NOT at the end
 
     // CASE2A : for removing the last one
     // if target is at the end => previous -> next = NULL;
-    if (tail -> name == target -> name){
+    //(tail -> name == target -> name) && (tail -> manuf == target -> manuf)
+    if ((tail -> name == target -> name) && (tail -> manuf == target -> manuf)){
       previous -> next = NULL;
     }
     // CASE2B : for removing any other
@@ -238,6 +240,8 @@ int main(){
   //delete the third one az24_x3
   cout << "Type in the name of commodity u wanna delete: " << endl;
   found = find_by_name(head);
+  print_item(found);
+  cout << endl;
   if (found != NULL){
     remove(head, found);
   }
