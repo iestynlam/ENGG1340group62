@@ -1,6 +1,8 @@
 // This program loops through the linked list to find an item by name, and has error handling in the case of two items having
 // the same name but different manufacturer. Also handles the cases of substrings appearing.
 
+// problems with returend pointer when choosing between values?
+
 //DEPENDENCIES OF find_by_name
 commodity* s_find_by_name(commodity* &head, string target);
 string fill_spaces(string str);

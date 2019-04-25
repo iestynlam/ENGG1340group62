@@ -1,12 +1,10 @@
-/*
-UNFINISHED
+/* WORKS
 displays the current data of the item and provides options for what to change
 - add quantity
 - subtract quantity
 - set quantity
 - change name
 - change manufacturer
-maybe add a digit check later if i'm bothered, use digit check from insert.cpp
 */
 
 void edit_item(commodity* &target) {
@@ -14,20 +12,23 @@ void edit_item(commodity* &target) {
   print_item(target);
   cout << "Indicate which field should be changed via corresponding number."
   "\n1. Change name\n2. Change manufacturer\n3. Increase quantity\n4. Decrease quantity"
-  "\n5. Set quantity" << endl;
+  "\n5. Set quantity\n6. Cancel" << endl;
   int choice;
   cin>> choice;
-
   if (choice == 1) {
     cout << "Enter new name: ";
     string userin;
-    getline(cin,userin);
+    while (userin.length()==0) { //bypass the problem of getline taking new line
+      getline(cin,userin);
+    }
     target->name = fill_spaces(userin);
   }
   else if (choice == 2) {
     cout << "Enter new manufacturer: ";
     string userin;
-    getline(cin,userin);
+    while (userin.length()==0) { //bypass the problem of getline taking new line
+      getline(cin,userin);
+    }
     target->manuf = fill_spaces(userin);
   }
   else if (choice == 3) {
@@ -48,5 +49,8 @@ void edit_item(commodity* &target) {
     int x;
     cin >> x;
     target->qty=x;
+  }
+  else if (choice == 6) {
+    cout << "Action canclled.\n";
   }
 }

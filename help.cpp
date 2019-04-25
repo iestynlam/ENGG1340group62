@@ -23,7 +23,7 @@ void help(string userin) {
     cout << "Terminates the program.";
   }
   else if (str == "edit") {
-    cout << "Edit details of an existing commodity.";
+    cout << "Edit details of an existing commodity. Allows you to change item name, manufacturer, and add/decrease/set quantity.";
   }
   else if (str == "display") {
     cout << "Displays all items currently in the system, along with";
