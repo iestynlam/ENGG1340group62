@@ -63,6 +63,7 @@ int main() {
       // error handling for user input on search (for strings only)
       // qty search is in-stock/out of stock (remember to do lowercase)
       // pass dynamically allocated array to out_array
+
       //continue => intro(1)
       }
     else {
@@ -70,7 +71,9 @@ int main() {
       // prompt user to ask what they want to sort by - last updated (? might be difficult),
       // quantity, alphabetical name, alphabetical manufacturer
       // pass a dynamically allocated array to out_array
-
+      display(head);
+      intro(1);
+      continue;
       //continue => intro(1)
       }
     else {

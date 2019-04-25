@@ -35,6 +35,18 @@ void edit_item(commodity* &target);
 // Delete an existing commodity
 void remove(commodity* &head, commodity* target);
 
+//========================================================================================================//
+//                        UNFINISHED!!!!                                                                  //
+
+//Display the linked list and  sorted according to user command
+// (NOW IS VERSION FOR UNSORT ONLY!!!)
+void display(commodity* &head);
+//========================================================================================================//
+//^^^ Above are function prototypes and its brief intro
+//|||
+//|||
+//vvv Below are the functions
+//========================================================================================================//
 void help(string userin) {
   string str = lowercase(userin);
   if (str == "options") {
@@ -377,3 +389,10 @@ void remove(commodity* &head, commodity* target) {
   update_file(head, filename);
 }
 // After removal need to update the inventory.txt
+
+void display(commodity* &head){
+  while (head -> next != NULL){
+    print_item(head);
+    head = head -> next;
+  }
+}
