@@ -9,19 +9,18 @@ string fill_spaces(string str);
 string lowercase(string str);
 
 commodity* find_by_name(commodity* &head) {
-  string userin, target;
-  getline(cin,userin); // User inputs name, can have spaces
-  target = fill_spaces(lowercase(userin)); // Fills spaces and makes it all lowercase
+  string userin;
+  cin >> userin;
 
   //loop through linked list to find number of matching item(s)
   int count = 0, substr_no = 0;
   commodity* current = head;
-  while(current!=NULL) {
+  while(current->next!=NULL) {
   // partial name input error handling, multiple items with same name
-    if (lowercase(current->name)==target) {
+    if (lowercase(current->name)==userin) {
       count++;
     }
-    else if (lowercase(current->name).find(target) != -1) {
+    else if (lowercase(current->name).find(userin) != -1) {
       substr_no++;
     }
     current = current->next;
@@ -34,7 +33,7 @@ commodity* find_by_name(commodity* &head) {
   }
   //case of single perfect match, no substrings
   else if (count == 1 && substr_no == 0) {
-    return s_find_by_name(head, target);
+    return s_find_by_name(head, userin);
   }
   //any form of multiple results- THIS IS REALLY BROKEN
   else {
@@ -45,7 +44,7 @@ commodity* find_by_name(commodity* &head) {
     current = head;
     count = 0;
 
-    while(current!=NULL) {
+    while(current->next!=NULL) {
       if(lowercase(current->name).find(target) != -1) {
         set[count] = *current;
         count++;
@@ -62,10 +61,9 @@ commodity* find_by_name(commodity* &head) {
 
     int choice;
     cin >> choice;
-    choice--;
 
-    current = &set[choice];
-    free(set);
+    current = &set[choice - 1];
+    // free(set); (I don't really know what it mean so please double check if u wanna use it, function works fine without it)
     //inserting delete[] set here causes issues when selecting first variable? unsure if free works.
     return current;
   } // any form of multiple results
