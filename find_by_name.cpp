@@ -75,6 +75,7 @@ commodity* find_by_name(commodity* &head) {
     int choice;
     cin >> choice;
 
+    // loops through to not return the copy but the original item in the linked list
     current = &set[choice -1];
     commodity* current2 = head;
     while(current2->next!=NULL) {
