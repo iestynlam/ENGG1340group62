@@ -11,6 +11,10 @@ struct commodity {
   commodity* next; // setting up linked list
 } ;
 
+void print_item(commodity* item) {
+  cout << "NAME: " << item->name << "\tMANUFACTURER: " << item->manuf << "\tQUANTITY: " << item->qty << endl;
+}
+
 void append_item(commodity* &head, string name, string manuf, int qty){
   commodity* a = new commodity;
   a->name = name;
@@ -61,7 +65,8 @@ commodity* find_by_name(commodity* &head) {
   //loop through linked list to find number of matching item(s)
   int count = 0, substr_no = 0;
   commodity* current = head;
-  while(current->next !=NULL) {
+
+  while(current->next != NULL) {
   // partial name input error handling, multiple items with same name
     if (lowercase(current->name)==userin) {
       count++;
@@ -70,6 +75,13 @@ commodity* find_by_name(commodity* &head) {
       substr_no++;
     }
     current = current->next;
+  }
+  // run again for last one
+  if (lowercase(current->name)==userin) {
+    count++;
+  }
+  else if (lowercase(current->name).find(userin) != -1) {
+    substr_no++;
   }
 
   //case of no matches
@@ -84,18 +96,24 @@ commodity* find_by_name(commodity* &head) {
   //any form of multiple results- THIS IS REALLY BROKEN
   else {
     int n = count+substr_no;
+    cout << n << endl;
     // dynamically allocated set being declared
     commodity* set = new commodity [n];
     // looping through again and inputting any matching values into the set
     current = head;
     count = 0;
 
-    while(current->next!=NULL) {
+    while(current->next != NULL) {
       if(lowercase(current->name).find(userin) != -1) {
         set[count] = *current;
         count++;
       }
       current = current->next;
+    }
+    // run again for last one
+    if(lowercase(current->name).find(userin) != -1) {
+      set[count] = *current;
+      count++;
     }
 
     cout << "These matches were found for \"" << userin << "\". Please indicate the appropriate item via its number.\n";
@@ -134,16 +152,95 @@ void initialize_list(commodity* &head, string filename) {
   fin1.close();
 } // void initialize_list //
 
+// To update the inventory.txt when called
+void update_file(commodity* &head, string filename) {
+  ofstream ostream;
+  string line;
+  commodity* &current = head;
+  ostream.open(filename);
+  while (current -> next != NULL){
+    ostream << current -> name << ' ' << current -> manuf << ' ' << current -> qty << endl;
+    current = current -> next;
+  }
+  ostream << current -> name << ' ' << current -> manuf << ' ' << current -> qty;
+  ostream.close();
+}
+
+// INPUT: A head pointer and a target pointer
+// Remove targeted commodity from list
+// And relinked!!
+void remove(commodity* &head, commodity* target) {
+  // create two pointer pointing to the previous commodity and after one
+  // Previous one => search from head
+  commodity* search = new commodity;
+  search = head;
+  commodity* previous = NULL;
+  commodity* after = NULL;
+  commodity* tail = NULL;
+
+  //Finding tail
+  while (search -> next != NULL){
+    search = search -> next;
+  }
+  tail = search;
+
+  // CASE1 : for removing first item
+  search = head;
+  if (search -> name == target -> name){
+    head = head -> next;
+  }
+  // Connecting the head to the second item (second item becomes head) and update the file
+
+  // CASE2 : for removing middle item or last item (TESTED)
+  else {
+    // FINDING PREVIOUS
+    while (search -> next -> name != target -> name){ // (Actually I trying to use condition (search->next != target) but fail)
+      search = search -> next;
+    }
+    previous = search;
+    // FIND "AFTER" IF TARGET IS NOT at the end
+
+    // CASE2A : for removing the last one
+    // if target is at the end => previous -> next = NULL;
+    if (tail -> name == target -> name){
+      previous -> next = NULL;
+    }
+    // CASE2B : for removing any other
+    else {
+      after = target -> next;
+      previous -> next = after;
+    }
+  }
+
+  //PRINT list
+  commodity* current= head;
+  while (current!=NULL) {
+    print_item(current);
+    current = current->next;
+  }
+  update_file(head, filename);
+}
+// After removal need to update the inventory.txt
+
 int main(){
   commodity* head = NULL;
   initialize_list(head, filename);
   commodity* cursor = head;
-  //find our target and assign a pointer to our target
+  commodity* found = NULL;
+/*
+ //find our target and assign a pointer to our target
   cout << "Type in the name of commodity u wanna find: " << endl;
   commodity* found = new commodity;
   found = find_by_name(head);
   cout << "NAME: " << found->name << "\tMANUFACTURER: " << found->manuf << "\tQUANTITY: " << found->qty << endl;
 
+*/
   //delete the third one az24_x3
-
+  cout << "Type in the name of commodity u wanna delete: " << endl;
+  found = find_by_name(head);
+  if (found != NULL){
+    remove(head, found);
+  }
+  // if found == NULL => return option
+  // else{}
 }

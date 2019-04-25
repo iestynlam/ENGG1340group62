@@ -28,6 +28,13 @@ commodity* find_by_name(commodity* &head) {
     }
     current = current->next;
   }
+  if (lowercase(current->name)==userin) {
+    count++;
+  }
+  else if (lowercase(current->name).find(userin) != -1) {
+    substr_no++;
+  }
+  current = current->next;
 
   //case of no matches
   if (count == 0 && substr_no == 0) {
@@ -52,6 +59,10 @@ commodity* find_by_name(commodity* &head) {
         count++;
       }
       current = current->next;
+    }
+    if(lowercase(current->name).find(target) != -1) {
+      set[count] = *current;
+      count++;
     }
 
     cout << "These matches were found for \"" << userin << "\". Please indicate the appropriate item via its number.\n";
