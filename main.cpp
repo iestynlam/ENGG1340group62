@@ -74,7 +74,6 @@ int main() {
       display(head);
       intro(1);
       continue;
-      //continue => intro(1)
       }
     else {
       if (option == "edit") {
