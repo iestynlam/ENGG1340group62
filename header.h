@@ -132,7 +132,7 @@ commodity insert(commodity* &head) {
   getline(cin,str_input);
   fill_spaces(str_input);
   if (str_input == "-") {
-    new_item.manuf = "[n/a]]";
+    new_item.manuf = "[n/a]";
   }
   else {
     new_item.manuf = str_input;
