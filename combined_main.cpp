@@ -140,7 +140,6 @@ commodity* find_by_name(commodity* &head) {
     getline(cin,userin);
   }
   target = fill_spaces(lowercase(userin));
-
   //loop through linked list to find number of matching item(s)
   int count = 0, substr_no = 0;
   commodity* current = head;
@@ -154,14 +153,6 @@ commodity* find_by_name(commodity* &head) {
     }
     current = current->next;
   }
-  if (lowercase(current->name)==userin) {
-    count++;
-  }
-  else if (lowercase(current->name).find(userin) != -1) {
-    substr_no++;
-  }
-  current = current->next;
-
   //case of no matches
   if (count == 0 && substr_no == 0) {
     cout << "No items matching \"" << userin << "\" were found.\n";
@@ -171,6 +162,7 @@ commodity* find_by_name(commodity* &head) {
   else if (count == 1 && substr_no == 0) {
     return s_find_by_name(head, target);
   }
+
   else {
     int n = count+substr_no;
     // dynamically allocated set being declared
@@ -185,10 +177,6 @@ commodity* find_by_name(commodity* &head) {
         count++;
       }
       current = current->next;
-    }
-    if(lowercase(current->name).find(target) != -1) {
-      set[count] = *current;
-      count++;
     }
 
     cout << "These matches were found for \"" << userin << "\". Please indicate the appropriate item via its number.\n";

@@ -28,13 +28,6 @@ commodity* find_by_name(commodity* &head) {
     }
     current = current->next;
   }
-  if (lowercase(current->name)==userin) {
-    count++;
-  }
-  else if (lowercase(current->name).find(userin) != -1) {
-    substr_no++;
-  }
-  current = current->next;
 
   //case of no matches
   if (count == 0 && substr_no == 0) {
