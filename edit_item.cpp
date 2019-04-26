@@ -42,6 +42,9 @@ void edit_item(commodity* &target) {
     int x;
     cin >> x;
     target->qty-=x;
+    if (target->qty <= 0) {
+      cout << "WARNING: Item no longer in stock." << endl;
+    }
   }
   else if (choice == 5) {
     cout << "Set new quantity: ";

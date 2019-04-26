@@ -14,9 +14,8 @@ void remove(commodity* &head, commodity* &target) {
       current = current->next;
     }
     //between and end case
-    else {
-      current->next = target->next;
-      delete target;
+    current->next = target->next;
+    delete target;
     }
   }
 }
