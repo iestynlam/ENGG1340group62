@@ -17,28 +17,31 @@ bool digit_check(string str_input) {
   return true;
 }
 
+
 void insert(commodity* &head) {
-  commodity* new_item;
-  string str_input;
+  commodity new_item;
+  string item_name,item_manuf,str_input;
 
   cout << "A new item will be entered into the system. Please provide the required details.\n"
   "If the manufacturer is unavailable, please enter \"-\"." << endl;
 
-  cout << "NAME: ";
-  getline(cin,str_input);
-  str_input = lowercase(fill_spaces(str_input)); // function to fill any spaces with '_', probably will be used elsewhere in the program for searches and such
-  new_item->name = str_input;
+  cout << "NAME:\n";
+  while (item_name.length()==0) {
+    getline(cin,item_name);
+  }
+  item_name = lowercase(fill_spaces(item_name)); // function to fill any spaces with '_', probably will be used elsewhere in the program for searches and such
+  new_item.name = item_name;
 
-  cout << "here0?\n";
-
-  cout << "MANUFACTURER: ";
-  getline(cin,str_input);
-  str_input = lowercase(fill_spaces(str_input));
-  if (str_input == "-") {
-    new_item->manuf = "[n/a]";
+  cout << "MANUFACTURER:\n";
+  while (item_manuf.length()==0) {
+    getline(cin,item_manuf);
+  }
+  item_manuf = lowercase(fill_spaces(item_manuf));
+  if (item_manuf == "-") {
+    new_item.manuf = "[n/a]";
   }
   else {
-    new_item->manuf = str_input;
+    new_item.manuf = item_manuf;
   }
 // error handling if user inputs words instead of numbers
   cout << "QUANTITY: ";
@@ -47,47 +50,65 @@ void insert(commodity* &head) {
     cout << "QUANTITY: ";
     cin >> str_input;
   }
-  cout << "here?\n";
   // converting string back into integer
   int temp=0;
   for (int i = 0; i < str_input.length(); i++) {
     temp+=(int(str_input[i])-48)*pow(10,(str_input.length()-i-1));
   }
-  new_item->qty = temp;
+  new_item.qty = temp;
 
   //CHECK IF ITEM ALREADY EXISTS
-  cout << "checking exist";
   commodity* current = head;
   while(current!=NULL) {
-    if (current->name == new_item->name && current->manuf == new_item->manuf) {
+    if (lowercase(current->name) == new_item.name && current->manuf == new_item.manuf) {
       cout << "An item already exists in the system with the same name and manufacturer:\n";
       print_item(current);
-      cout << "What would you like to do?\n1. Merge items\n2.Change name\n3.Change manufactuer\n4.Cancel\n";
+      cout << "What would you like to do?\n1. Merge items\n2. Change name\n3. Change manufactuer\n4. Cancel\n";
       int choice;
       cin >> choice;
+
       if (choice == 1) {
-        current->qty+=new_item->qty;
-        append_item(head, new_item->name, new_item->manuf, new_item->qty);
+        current->qty+=new_item.qty;
+        break;
       }
+
       else if (choice == 2) {
-        cout << "NAME: ";
-        getline(cin,str_input);
-        str_input = lowercase(fill_spaces(str_input)); // function to fill any spaces with '_', probably will be used elsewhere in the program for searches and such
-        new_item->name = str_input;
-        append_item(head, new_item->name, new_item->manuf, new_item->qty);
+        item_name = "";
+        cout << "NAME:\n";
+        while (item_name.length()==0) {
+          getline(cin,item_name);
+          if (lowercase(fill_spaces(item_name)) == lowercase(current->name)) {
+              cout << "Please use a different name.\n";
+              item_name = "";
+            }
+        }
+        item_name = lowercase(fill_spaces(item_name)); // function to fill any spaces with '_', probably will be used elsewhere in the program for searches and such
+        new_item.name = item_name;
+        append_item(head, new_item.name, new_item.manuf, new_item.qty);
+        break;
       }
+
       else if (choice == 3) {
-        cout << "MANUFACTURER: ";
-        getline(cin,str_input);
-        str_input = lowercase(fill_spaces(str_input));
-        if (str_input == "-") {
-          new_item->manuf = "[n/a]";
-        }
-        else {
-          new_item->manuf = str_input;
-        }
-        append_item(head, new_item->name, new_item->manuf, new_item->qty);
+        item_manuf="";
+        cout << "MANUFACTURER:\n";
+        while (item_manuf.length()==0) {
+          getline(cin,item_manuf);
+          item_manuf = lowercase(fill_spaces(item_manuf));
+          if (item_manuf == "-") {
+            new_item.manuf = "[n/a]";
+          }
+          else {
+            new_item.manuf = item_manuf;
+          }
+          if (lowercase(fill_spaces(item_manuf)) == lowercase(current->manuf)) {
+              cout << "Please use a different name.\n";
+              item_manuf = "";
+            }
+          }
+        append_item(head, new_item.name, new_item.manuf, new_item.qty);
+        break;
       }
+
       else if (choice == 4) {
         cout << "Action cancelled.";
       }
