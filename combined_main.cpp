@@ -514,8 +514,6 @@ void insert(commodity* &head) {
   }
 }
 
-void update_file(commodity* &head, string filename);
-
 void remove(commodity* &head, commodity* &target) {
   commodity* current = head;
   //if head
@@ -529,10 +527,8 @@ void remove(commodity* &head, commodity* &target) {
       current = current->next;
     }
     //between case
-    else {
-      current->next = target->next;
-      delete target;
-    }
+    current->next = target->next;
+    delete target;
   }
 }
 
