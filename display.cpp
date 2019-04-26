@@ -1,13 +1,6 @@
 // reads user input, displays by alphabetical name, alphabetical manuf, ascending
 // or descending quantity
 
-void swap_commodity(commodity &a, commodity &b) {
-  commodity temp;
-  temp = a;
-  a = b;
-  b = temp;
-}
-
 void display(commodity* &head) {
   commodity* current = head;
   cout << "Select order to display in:\n1. Alphabetical (Name)\n2. Alphabetical (Manufacturer)"
