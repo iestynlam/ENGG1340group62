@@ -32,6 +32,9 @@ void help(string userin) {
   else if (str == "help") {
     cout << "Provides further details on the functions of available commands.";
   }
+  else if (str == "history"){
+    cout << "Display the history of inventory storage.";
+  }
   else {
     cout << userin << " is not an available command. Type 'options' to view the available commands.";
   }

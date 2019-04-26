@@ -41,7 +41,7 @@ void help(string str);
 // Displays all available commands to the user.
 void options() {
   cout << "Available commands are:\nsearch, insert, delete, "
-  "edit, display, options, help, exit." << endl << endl;
+  "edit, display, history, options, help, exit." << endl << endl;
 }
 
 // INPUT: String of any length
