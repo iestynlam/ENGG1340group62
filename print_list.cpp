@@ -1,5 +1,5 @@
 // Used to print everything in the linked list, used to display to screen for different options
-// also just here for testing whilst writing code
+// mostly here for testing whilst writing code
 
 void print_list(commodity* &head) {
   commodity* current= head;

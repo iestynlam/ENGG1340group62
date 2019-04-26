@@ -1,5 +1,6 @@
-// reads user input to determine by name or manufacturer or qty status
-// prints items that match query to screen
+// Reads user input to determine by name or manufacturer or qty status
+// prints items that match query to screen, has handling for partial entry of names/manufacturers
+
 void search_item(commodity* &head) {
   commodity* current = head;
   cout << "Select what criteria to search by:\n1. Name\n2. Manufacturer\n3. In stock\n4. Out of stock\n";
@@ -9,7 +10,7 @@ void search_item(commodity* &head) {
   if (choice == 1) {
     cout << "Please enter item name.\n";
     string userin, target;
-    while (userin.length()==0) {
+    while (userin.length()==0) {  // this while loop is used to bypass the problem of getline taking the newline character as input
       getline(cin,userin);
     }
     target = fill_spaces(lowercase(userin));

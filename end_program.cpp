@@ -52,13 +52,7 @@ void end_program(commodity* &head) {
     current = current->next;
   }
   fout_1.close();
-  // cleaning up memory - not certain if this is working [needs checking]
-  current = head;
-  //loops until only the head is left
-  if (head->next==NULL) {
-    delete head;
-  }
-
+  // cleaning up memory 
   while (current->next!=NULL) {
     head = head->next;
     delete current;

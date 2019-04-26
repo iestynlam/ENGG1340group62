@@ -1,10 +1,11 @@
-/* WORKS
+/*
 displays the current data of the item and provides options for what to change
 - add quantity
 - subtract quantity
 - set quantity
 - change name
 - change manufacturer
+- cancel
 */
 
 void edit_item(commodity* &target) {
@@ -18,15 +19,15 @@ void edit_item(commodity* &target) {
   if (choice == 1) {
     cout << "Enter new name: ";
     string userin;
-    while (userin.length()==0) { //bypass the problem of getline taking new line
+    while (userin.length()==0) { // this while loop is used to bypass the problem of getline taking the newline character as input
       getline(cin,userin);
     }
-    target->name = fill_spaces(userin);
+    target->name = fill_spaces(userin); // making user input fit system requirements (no spaces in name/manufacturer)
   }
   else if (choice == 2) {
     cout << "Enter new manufacturer: ";
     string userin;
-    while (userin.length()==0) { //bypass the problem of getline taking new line
+    while (userin.length()==0) {
       getline(cin,userin);
     }
     target->manuf = fill_spaces(userin);
@@ -43,7 +44,7 @@ void edit_item(commodity* &target) {
     cin >> x;
     target->qty-=x;
     if (target->qty <= 0) {
-      cout << "WARNING: Item no longer in stock." << endl;
+      cout << "WARNING: Item no longer in stock." << endl; // Alert message for out of stock, item can go negative in case store wants to set aside some stock for a later purpose
     }
   }
   else if (choice == 5) {
@@ -54,6 +55,6 @@ void edit_item(commodity* &target) {
     target->qty=x;
   }
   else if (choice == 6) {
-    cout << "Action canclled.\n";
+    cout << "Action cancelled.\n";
   }
 }

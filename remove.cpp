@@ -1,6 +1,6 @@
 // INPUT: A head pointer and a target pointer
-// Remove targeted commodity from list
-// And relinked!!
+// FUNCTIONL: removes target pointer from list and deletes allocated memory, then relinks list
+
 void remove(commodity* &head, commodity* &target) {
   commodity* current = head;
   //if head
