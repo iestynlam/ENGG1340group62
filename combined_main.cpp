@@ -536,7 +536,7 @@ void remove(commodity* &head, commodity* target) {
 
   // CASE1 : for removing first item
   search = head;
-  if (search -> name == target -> name){
+  if ((search -> name == target -> name) && (search -> manuf == target -> manuf)){
     head = head -> next;
   }
   // Connecting the head to the second item (second item becomes head) and update the file
@@ -544,7 +544,7 @@ void remove(commodity* &head, commodity* target) {
   // CASE2 : for removing middle item or last item (TESTED)
   else {
     // FINDING PREVIOUS
-    while (search -> next -> name != target -> name){ // (Actually I trying to use condition (search->next != target) but fail)
+    while ((search -> next -> name != target -> name) || (search -> next -> manuf != search -> manuf)){ 
       search = search -> next;
     }
     previous = search;
