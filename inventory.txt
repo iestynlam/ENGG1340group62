@@ -1,7 +1,2 @@
-modern_pro_17 suhr 10
-rg1070_fbz ibanez 3
-az24_x3 ibanez 2
-thbb_10 ibanez 6
-thbb_10 ibasd 7
-am_professional_19 fender 15
 acoustasonic fender 13
+modern_pro_classic sijr 39

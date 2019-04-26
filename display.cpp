@@ -53,7 +53,7 @@ void display(commodity* &head) {
     cout << "All items from high to low quantity:\n";
     for (int i=1; i<count; i++) {
       for (int j=0; j<(count-1); j++) {
-        if (set[j].qty > set[j+1].qty) {
+        if (set[j].qty < set[j+1].qty) {
           swap_commodity(set[j],set[j+1]);
         }
       }
@@ -64,7 +64,7 @@ void display(commodity* &head) {
     cout << "All items from low to high quantity:\n";
     for (int i=1; i<count; i++) {
       for (int j=0; j<(count-1); j++) {
-        if (set[j].qty < set[j+1].qty) {
+        if (set[j].qty > set[j+1].qty) {
           swap_commodity(set[j],set[j+1]);
         }
       }

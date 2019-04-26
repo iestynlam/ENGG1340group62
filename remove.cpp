@@ -26,7 +26,7 @@ if ((search -> name == target -> name) && (search -> manuf == target -> manuf)){
   // CASE2 : for removing middle item or last item (TESTED)
   else {
     // FINDING PREVIOUS
-    while ((search -> next -> name != target -> name) || (search -> next -> manuf != search -> manuf)){ 
+    while ((search -> next -> name != target -> name) || (search -> next -> manuf != search -> manuf)){
       search = search -> next;
     }
     previous = search;
@@ -43,13 +43,4 @@ if ((search -> name == target -> name) && (search -> manuf == target -> manuf)){
       previous -> next = after;
     }
   }
-
-  //PRINT list
-  commodity* current= head;
-  while (current!=NULL) {
-    print_item(current);
-    current = current->next;
-  }
-  update_file(head, filename);
 }
-// After removal need to update the inventory.txt

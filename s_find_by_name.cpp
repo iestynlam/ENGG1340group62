@@ -3,7 +3,7 @@
 
 commodity* s_find_by_name(commodity* &head, string target) {
   commodity* current = head;
-  while(current->next!=NULL) {
+  while(current!=NULL) {
     if (lowercase(current->name)==target) {
       return current;
     }

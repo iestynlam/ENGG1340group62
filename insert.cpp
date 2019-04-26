@@ -25,14 +25,14 @@ void insert(commodity* &head) {
   cout << "A new item will be entered into the system. Please provide the required details.\n"
   "If the manufacturer is unavailable, please enter \"-\"." << endl;
 
-  cout << "NAME:\n";
+  cout << "NAME: ";
   while (item_name.length()==0) {
     getline(cin,item_name);
   }
   item_name = lowercase(fill_spaces(item_name)); // function to fill any spaces with '_', probably will be used elsewhere in the program for searches and such
   new_item.name = item_name;
 
-  cout << "MANUFACTURER:\n";
+  cout << "MANUFACTURER: ";
   while (item_manuf.length()==0) {
     getline(cin,item_manuf);
   }

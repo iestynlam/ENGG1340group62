@@ -18,6 +18,14 @@ void print_item(commodity* item) {
   cout << "NAME: " << item->name << "\tMANUFACTURER: " << item->manuf << "\tQUANTITY: " << item->qty << endl;
 }
 
+void print_list(commodity* &head) {
+  commodity* current= head;
+  while (current!=NULL) {
+    print_item(current);
+    current = current->next;
+  }
+}
+
 void intro(int x) {
   if (x == 0) { // first intro message
     cout << "// Welcome to the commodity manager! //" << endl << "\nType \"options\" to view available "
@@ -125,7 +133,7 @@ void initialize_list(commodity* &head, string filename) {
 
 commodity* s_find_by_name(commodity* &head, string target) {
   commodity* current = head;
-  while(current->next!=NULL) {
+  while(current!=NULL) {
     if (lowercase(current->name)==target) {
       return current;
     }
@@ -154,13 +162,6 @@ commodity* find_by_name(commodity* &head) {
     }
     current = current->next;
   }
-  if (lowercase(current->name)==userin) {
-    count++;
-  }
-  else if (lowercase(current->name).find(userin) != -1) {
-    substr_no++;
-  }
-  current = current->next;
 
   //case of no matches
   if (count == 0 && substr_no == 0) {
@@ -186,10 +187,6 @@ commodity* find_by_name(commodity* &head) {
       }
       current = current->next;
     }
-    if(lowercase(current->name).find(target) != -1) {
-      set[count] = *current;
-      count++;
-    }
 
     cout << "These matches were found for \"" << userin << "\". Please indicate the appropriate item via its number.\n";
     for (int i = 0; i<n; i++) {
@@ -211,8 +208,8 @@ commodity* find_by_name(commodity* &head) {
       }
       current2 = current2->next;
     }
-  }
-  return NULL; // any form of multiple results
+  } // any form of multiple results
+  return NULL;
 }
 
 void search_item(commodity* &head) {
@@ -374,7 +371,7 @@ void display(commodity* &head) {
     cout << "All items from high to low quantity:\n";
     for (int i=1; i<count; i++) {
       for (int j=0; j<(count-1); j++) {
-        if (set[j].qty > set[j+1].qty) {
+        if (set[j].qty < set[j+1].qty) {
           swap_commodity(set[j],set[j+1]);
         }
       }
@@ -385,7 +382,7 @@ void display(commodity* &head) {
     cout << "All items from low to high quantity:\n";
     for (int i=1; i<count; i++) {
       for (int j=0; j<(count-1); j++) {
-        if (set[j].qty < set[j+1].qty) {
+        if (set[j].qty > set[j+1].qty) {
           swap_commodity(set[j],set[j+1]);
         }
       }
@@ -416,14 +413,14 @@ void insert(commodity* &head) {
   cout << "A new item will be entered into the system. Please provide the required details.\n"
   "If the manufacturer is unavailable, please enter \"-\"." << endl;
 
-  cout << "NAME:\n";
+  cout << "NAME: ";
   while (item_name.length()==0) {
     getline(cin,item_name);
   }
   item_name = lowercase(fill_spaces(item_name)); // function to fill any spaces with '_', probably will be used elsewhere in the program for searches and such
   new_item.name = item_name;
 
-  cout << "MANUFACTURER:\n";
+  cout << "MANUFACTURER: ";
   while (item_manuf.length()==0) {
     getline(cin,item_manuf);
   }
@@ -467,7 +464,7 @@ void insert(commodity* &head) {
 
       else if (choice == 2) {
         item_name = "";
-        cout << "NAME:\n";
+        cout << "NAME: ";
         while (item_name.length()==0) {
           getline(cin,item_name);
           if (lowercase(fill_spaces(item_name)) == lowercase(current->name)) {
@@ -484,7 +481,7 @@ void insert(commodity* &head) {
 
       else if (choice == 3) {
         item_manuf="";
-        cout << "MANUFACTURER:\n";
+        cout << "MANUFACTURER: ";
         while (item_manuf.length()==0) {
           getline(cin,item_manuf);
           item_manuf = lowercase(fill_spaces(item_manuf));
@@ -544,7 +541,7 @@ void remove(commodity* &head, commodity* target) {
   // CASE2 : for removing middle item or last item (TESTED)
   else {
     // FINDING PREVIOUS
-    while ((search -> next -> name != target -> name) || (search -> next -> manuf != search -> manuf)){ 
+    while ((search -> next -> name != target -> name) || (search -> next -> manuf != search -> manuf)){
       search = search -> next;
     }
     previous = search;
@@ -561,14 +558,6 @@ void remove(commodity* &head, commodity* target) {
       previous -> next = after;
     }
   }
-
-  //PRINT list
-  commodity* current= head;
-  while (current!=NULL) {
-    print_item(current);
-    current = current->next;
-  }
-  update_file(head, filename);
 }
 
 void update_file(commodity* &head, string filename) {
@@ -650,7 +639,9 @@ int main() {
     else if (option == "edit") {
       cout << "Please enter the name of the item you wish to edit.\n";
       commodity* target = find_by_name(head);
-      edit_item(target);
+      if (target!=NULL) {
+        edit_item(target);
+      }
     }
     else if (option == "insert") {
       insert(head); // INSERT TO BE IMPLEMENTED
@@ -658,16 +649,17 @@ int main() {
     else if (option == "delete") {
       cout << "Please enter the name of the item you wish to delete.\n";
       commodity* target = find_by_name(head);
-      cout << "Are you sure you wish to delete the item: " << target->name << "? (Y/N)\n";
-      char confirm;
-      string temp = target->name;
-      cin >> confirm;
-      if (confirm=='Y') {
-        remove(head, target);
-        cout << "The item \"" << temp << "\" has been deleted.";
-      }
-      else {
-        cout << "Action not executed.\n";
+      if (target!=NULL) {
+        cout << "Are you sure you wish to delete the item: " << target->name << "? (Y/N)\n";
+        string confirm, temp = target->name;
+        cin >> confirm;
+        if (lowercase(confirm)=="y") {
+          remove(head, target);
+          cout << "The item \"" << temp << "\" has been deleted.";
+        }
+        else {
+          cout << "Action not executed.\n";
+        }
       }
       // final promt (Y/N) - then "this item has been deleted".
     }
@@ -680,7 +672,7 @@ int main() {
       cout << userin << " is not an available command. Type 'options' to view the available commands.\n";
     }
     intro(1);
-    userin="";
+    userin = "";
   }
 
   return 0;
