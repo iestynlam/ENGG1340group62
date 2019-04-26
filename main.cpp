@@ -114,11 +114,7 @@ int main() {
       edit_item(target);
     }
     else if (option == "insert") {
-      commodity* new_item = insert(head); // INSERT TO BE IMPLEMENTED, ERROR HANDLING IF ITEM ALREADY EXISTS
-      if (new_item -> name != "") { // EMPTY STRING RETURNED IF THE PROCESS IS CANCELLED
-        append_item(head, new_item -> name, new_item -> manuf, new_item -> qty);
-      }
-      continue;
+      insert(head); // INSERT TO BE IMPLEMENTED
     }
     else if (option == "delete") {
       cout << "Please enter the name of the item you wish to delete.\n";

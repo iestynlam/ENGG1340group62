@@ -17,38 +17,27 @@ bool digit_check(string str_input) {
   return true;
 }
 
-commodity insert(commodity* &head) {
-  commodity new_item;
+void insert(commodity* &head) {
+  commodity* new_item;
   string str_input;
 
   cout << "A new item will be entered into the system. Please provide the required details.\n"
   "If the manufacturer is unavailable, please enter \"-\"." << endl;
-  cout << "NAME: ";
 
+  cout << "NAME: ";
   getline(cin,str_input);
   str_input = lowercase(fill_spaces(str_input)); // function to fill any spaces with '_', probably will be used elsewhere in the program for searches and such
-
-  while (item_exists(head, str_input)) {
-    cout << "This name already exists in the system. Please enter a different name. If you would like to cancel this addition, enter \"-\"\nNAME: ";
-    getline(cin,str_input);
-    str_input = fill_spaces(str_input);
-    if (str_input == "-") {
-      cout << "New addition cancelled." << endl;
-      return new_item;
-    }
-  }
-  new_item.name = str_input;
+  new_item->name = str_input;
 
   cout << "MANUFACTURER: ";
   getline(cin,str_input);
-  fill_spaces(str_input);
+  str_input = lowercase(fill_spaces(str_input));
   if (str_input == "-") {
-    new_item.manuf = "[n/a]]";
+    new_item->manuf = "[n/a]";
   }
   else {
-    new_item.manuf = str_input;
+    new_item->manuf = str_input;
   }
-
 // error handling if user inputs words instead of numbers
   cout << "QUANTITY: ";
   cin >> str_input; // no need for getline because no spaces for an int
@@ -61,7 +50,42 @@ commodity insert(commodity* &head) {
   for (int i = 0; i < str_input.length(); i++) {
     temp+=(int(str_input[i])-48)*pow(10,(str_input.length()-i-1));
   }
-  new_item.qty = temp;
+  new_item->qty = temp;
 
-  return new_item;
+  //CHECK IF ITEM ALREADY EXISTS
+  commodity* current = head;
+  while(current!=NULL) {
+    if (current->name == new_item->name && current->manuf == new_item->manuf) {
+      cout << "An item already exists in the system with the same name and manufacturer:\n";
+      print_item(current);
+      cout << "What would you like to do?\n1. Merge items\n2.Change name\n3.Change manufactuer\n4.Cancel\n";
+      int choice;
+      cin >> choice;
+      if (choice == 1) {
+        current->qty+=new_item->qty;
+      }
+      else if (choice == 2) {
+        cout << "NAME: ";
+        getline(cin,str_input);
+        str_input = lowercase(fill_spaces(str_input)); // function to fill any spaces with '_', probably will be used elsewhere in the program for searches and such
+        new_item->name = str_input;
+        append_item(new_item);
+      }
+      else if (choice == 3) {
+        cout << "MANUFACTURER: ";
+        getline(cin,str_input);
+        str_input = lowercase(fill_spaces(str_input));
+        if (str_input == "-") {
+          new_item->manuf = "[n/a]";
+        }
+        else {
+          new_item->manuf = str_input;
+        }
+        append_item(new_item);
+      }
+      else if (choice == 4) {
+        cout << "Action cancelled."
+      }
+    }
+  }
 }
