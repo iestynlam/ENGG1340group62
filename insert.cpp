@@ -29,6 +29,8 @@ void insert(commodity* &head) {
   str_input = lowercase(fill_spaces(str_input)); // function to fill any spaces with '_', probably will be used elsewhere in the program for searches and such
   new_item->name = str_input;
 
+  cout << "here0?\n";
+
   cout << "MANUFACTURER: ";
   getline(cin,str_input);
   str_input = lowercase(fill_spaces(str_input));
@@ -45,6 +47,7 @@ void insert(commodity* &head) {
     cout << "QUANTITY: ";
     cin >> str_input;
   }
+  cout << "here?\n";
   // converting string back into integer
   int temp=0;
   for (int i = 0; i < str_input.length(); i++) {
@@ -53,6 +56,7 @@ void insert(commodity* &head) {
   new_item->qty = temp;
 
   //CHECK IF ITEM ALREADY EXISTS
+  cout << "checking exist";
   commodity* current = head;
   while(current!=NULL) {
     if (current->name == new_item->name && current->manuf == new_item->manuf) {
@@ -63,13 +67,14 @@ void insert(commodity* &head) {
       cin >> choice;
       if (choice == 1) {
         current->qty+=new_item->qty;
+        append_item(head, new_item->name, new_item->manuf, new_item->qty);
       }
       else if (choice == 2) {
         cout << "NAME: ";
         getline(cin,str_input);
         str_input = lowercase(fill_spaces(str_input)); // function to fill any spaces with '_', probably will be used elsewhere in the program for searches and such
         new_item->name = str_input;
-        append_item(new_item);
+        append_item(head, new_item->name, new_item->manuf, new_item->qty);
       }
       else if (choice == 3) {
         cout << "MANUFACTURER: ";
@@ -81,11 +86,12 @@ void insert(commodity* &head) {
         else {
           new_item->manuf = str_input;
         }
-        append_item(new_item);
+        append_item(head, new_item->name, new_item->manuf, new_item->qty);
       }
       else if (choice == 4) {
-        cout << "Action cancelled."
+        cout << "Action cancelled.";
       }
     }
+    current = current->next;
   }
 }
