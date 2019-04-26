@@ -59,6 +59,7 @@ void insert(commodity* &head) {
 
   //CHECK IF ITEM ALREADY EXISTS
   commodity* current = head;
+  bool exists = false;
   while(current!=NULL) {
     if (lowercase(current->name) == new_item.name && current->manuf == new_item.manuf) {
       cout << "An item already exists in the system with the same name and manufacturer:\n";
@@ -69,6 +70,7 @@ void insert(commodity* &head) {
 
       if (choice == 1) {
         current->qty+=new_item.qty;
+        exists = true;
         break;
       }
 
@@ -85,6 +87,7 @@ void insert(commodity* &head) {
         item_name = lowercase(fill_spaces(item_name)); // function to fill any spaces with '_', probably will be used elsewhere in the program for searches and such
         new_item.name = item_name;
         append_item(head, new_item.name, new_item.manuf, new_item.qty);
+        exists = true;
         break;
       }
 
@@ -106,13 +109,19 @@ void insert(commodity* &head) {
             }
           }
         append_item(head, new_item.name, new_item.manuf, new_item.qty);
+        exists = true;
         break;
       }
 
       else if (choice == 4) {
         cout << "Action cancelled.";
+        exists = true;
+        break;
       }
     }
     current = current->next;
+  }
+  if (exists==false) {
+    append_item(head, new_item.name, new_item.manuf, new_item.qty);
   }
 }

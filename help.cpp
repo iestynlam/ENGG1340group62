@@ -27,7 +27,7 @@ void help(string userin) {
   }
   else if (str == "display") {
     cout << "Displays all items currently in the system, along with";
-    " associated information."
+    " associated information.";
   }
   else if (str == "help") {
     cout << "Provides further details on the functions of available commands.";

@@ -59,7 +59,7 @@ void end_program(commodity* &head);
 
 // INPUT: head of the linked list to be able to check if item already exists
 // RETURN: A commodity struct with name, manufacturer, and quantity.
-commodity* insert(commodity* &head);
+void insert(commodity* &head);
 
 /* Using file I/O and a reference to a 'inventory.txt' to keep track of all items even when program has been terminated
 This program opens the file (or creates a new one if it doesnt exist) and creates a linked list which will be used whilst
