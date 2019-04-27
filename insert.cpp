@@ -54,6 +54,7 @@ void insert(commodity* &head) {
 
       if (choice == 1) {
         current->qty+=new_item.qty;
+        cout << "Quantities merged." << endl;
         exists = true;
         break;
       }
@@ -71,6 +72,7 @@ void insert(commodity* &head) {
         item_name = fill_spaces(item_name);
         new_item.name = item_name;
         append_item(head, new_item.name, new_item.manuf, new_item.qty);
+        cout << "Item added." << endl;
         exists = true;
         break;
       }
@@ -93,6 +95,7 @@ void insert(commodity* &head) {
             }
           }
         append_item(head, new_item.name, new_item.manuf, new_item.qty);
+        cout << "Item added." << endl;
         exists = true;
         break;
       }
@@ -108,5 +111,6 @@ void insert(commodity* &head) {
   // if item doesnt already exist
   if (exists==false) {
     append_item(head, new_item.name, new_item.manuf, new_item.qty);
+    cout << "Item added." << endl;
   }
 }
