@@ -1,0 +1,12 @@
+western_long_sleeve_shirt_L calvin_klein 100
+western_long_sleeve_shirt_M calvin_klein 100
+western_long_sleeve_shirt_S calvin_klein 100
+slim_casual_textured_suit_L calvin_klein 200
+slim_casual_textured_suit_M calvin_klein 200
+slim_casual_textured_suit_S calvin_klein 200
+palm_print_t_shirt_L tommy_hilfiger 100
+palm_print_t_shirt_M tommy_hilfiger 100
+palm_print_t_shirt_S tommy_hilfiger 100
+sport_logo_t_shirt_L tommy_hilfiger 400
+sport_logo_t_shirt_M tommy_hilfiger 400
+sport_logo_t_shirt_S tommy_hilfiger 400
