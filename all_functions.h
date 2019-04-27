@@ -1,6 +1,13 @@
 #ifndef ALL_FUNCTIONS_H
 #define ALL_FUNCTIONS_H
 
+struct commodity {
+  string name; // name of commodity
+  string manuf; // name of manufacturer
+  int qty; // quantity of commodity
+  commodity* next; // setting up linked list
+} ;
+
 void print_item(commodity* item);
 void intro(int x);
 string lowercase(string str);
