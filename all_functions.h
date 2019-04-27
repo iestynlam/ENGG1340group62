@@ -1,5 +1,5 @@
 #ifndef ALL_FUNCTIONS_H
-#define ALLP_FUNCTIONS_H
+#define ALL_FUNCTIONS_H
 
 void print_item(commodity* item);
 void intro(int x);

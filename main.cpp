@@ -1,5 +1,6 @@
 #include <iostream>
 #include <string>
+#include "all_functions.h"
 using namespace std;
 
 const string filename = "inventory.txt";
