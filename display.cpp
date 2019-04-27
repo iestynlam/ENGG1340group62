@@ -69,7 +69,6 @@ void display(commodity* &head) {
     }
   }
   //clear dynamically allocated memory to prevent memory leak and prints sorted list
-  cout << endl;
   for (int i=0; i<count; i++) {
     print_item(&set[i]);
   }

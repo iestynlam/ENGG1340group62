@@ -86,7 +86,7 @@ void help(string userin) {
 
 void options() {
   cout << "Available commands are:\nsearch, insert, delete, "
-  "edit, display, options, help, exit." << endl << endl;
+  "edit, display, options, help, exit." << endl;
 }
 
 string fill_spaces(string str) {
@@ -401,7 +401,6 @@ void display(commodity* &head) {
     }
   }
   //clear dynamically allocated memory and output results
-  cout << endl;
   for (int i=0; i<count; i++) {
     print_item(&set[i]);
   }
@@ -514,7 +513,7 @@ void insert(commodity* &head) {
       }
 
       else if (choice == 4) {
-        cout << "Action cancelled.";
+        cout << "Action cancelled." << endl;
         exists = true;
         break;
       }
@@ -695,7 +694,7 @@ int main() {
         cin >> confirm;
         if (lowercase(confirm)=="y") {
           remove(head, target);
-          cout << "The item \"" << temp << "\" has been deleted.";
+          cout << "The item \"" << temp << "\" has been deleted.\n";
         }
         else {
           cout << "Action not executed.\n";

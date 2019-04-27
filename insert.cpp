@@ -101,7 +101,7 @@ void insert(commodity* &head) {
       }
 
       else if (choice == 4) {
-        cout << "Action cancelled.";
+        cout << "Action cancelled." << endl;
         exists = true;
         break;
       }

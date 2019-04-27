@@ -2,5 +2,5 @@
 
 void options() {
   cout << "Available commands are:\nsearch, insert, delete, "
-  "edit, display, history, options, help, exit." << endl << endl;
+  "edit, display, history, options, help, exit." << endl;
 }

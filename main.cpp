@@ -121,7 +121,7 @@ int main() {
         cin >> confirm;
         if (lowercase(confirm)=="y") {
           remove(head, target);
-          cout << "The item \"" << temp << "\" has been deleted.";
+          cout << "The item \"" << temp << "\" has been deleted.\n";
         }
         else {
           cout << "Action not executed.\n";
