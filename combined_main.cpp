@@ -557,19 +557,6 @@ void update_file(commodity* &head, string filename) {
 }
 
 void end_program(commodity* &head) {
-  //creating a txt file to save the linked list
-  ofstream fout_2 (buffer);
-  commodity* current1= head;
-  while (current1!=NULL) {
-    fout_2 << current1->name << " " << current1->manuf << " " << current1->qty << endl;
-    current1 = current1->next;
-  }
-  fout_2.close();
-// if linked list and old_inventory.txt is different
-  if (!same(buffer, old_filename)){
-    write_history(buffer, inventory_history);
-  }
-
   // copy pasting inventory into old_inventory
   ifstream fin (filename);
   ofstream fout_0 (old_filename);
@@ -646,6 +633,21 @@ void history(string inventory_history){
   history.close();
 }
 
+void before_end_program(commodity* head){
+  //creating a txt file, buffer,  to save the linked list
+  ofstream fout_2 (buffer);
+  commodity* current1= head;
+  while (current1!=NULL) {
+    fout_2 << current1->name << " " << current1->manuf << " " << current1->qty << endl;
+    current1 = current1->next;
+  }
+  fout_2.close();
+  // if linked list and old_inventory.txt is different
+  if (!same(buffer, old_filename)){
+    write_history(buffer, inventory_history);
+  }
+}
+
 int main() {
   commodity* head = NULL;
   initialize_list(head,filename);
@@ -704,6 +706,7 @@ int main() {
     }
     else if (option == "exit") {
       cout << endl << "// Thank you for using the program, this program has now ended. //" << endl;
+      before_end_program(head);
       end_program(head);
       break;
     }

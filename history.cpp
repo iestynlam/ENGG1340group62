@@ -1,6 +1,5 @@
 #include <iostream>
 #include <fstream>
-using namespace std;
 
 void history(string inventory_history){
   ifstream history;
