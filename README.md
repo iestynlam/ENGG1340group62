@@ -35,7 +35,7 @@ To compile and execute the program, open the directory in command prompt and run
 - make program
 - ./program
 
-The file comes with 3 example 'inventory.txt' to use with the program, which are three situations in which this program could foreseeably be used. To use these files, the items have to be named exactly 'inventory.txt'.
+The file comes with 3 example 'inventory.txt' to use with the program, which are three situations in which this program could foreseeably be used. To use these files, the items have to be named exactly 'inventory.txt'. NOTE: inventory_history.txt will still show the old inventory even when switching sample problem settings.
 ### Case 1:
 Music Store, "sample1_inventory.txt"
 

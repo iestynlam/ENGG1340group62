@@ -1,0 +1,17 @@
+american_professional_stratocaster fender 6
+american_professional_telecaster fender 11
+p_37d yamaha 3
+clip_on_tuner ibanez 20
+clip_on_tuner korg 12
+thbb_10 ibanez 0
+AG96QA ibanez 2
+GPCPAK4 martin_guitars 1
+pro_mod_dk24_hss charvel 3
+cp300 yamaha 2
+cp1_keyboard yamaha 0
+silversky prs 3
+mccarty594 prs 1
+SE_A60E prs 4
+AZ2402 ibanez 3
+sa560mb ibanez 11
+bullet_strat_17 squier 6

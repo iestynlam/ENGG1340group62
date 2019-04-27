@@ -1,0 +1,10 @@
+g502 logitech 17
+g703 logitech 3
+g512_carbon logitech 10
+geforce_RTX_2060_6gb msi 15
+RM_650x corsair 5
+h800_headset logitech 0
+MasterCase_Pro_5 cooler_master 5
+geforce_rtx_2080TI NVIDIA 3
+basilisk_quartz razer 0
+blackwidow_chromaX_tournament_ed razer 0
