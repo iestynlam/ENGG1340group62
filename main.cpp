@@ -25,24 +25,14 @@ struct commodity {
 } ;
 
 // INTRODUCTORY MESSAGE & MESSAGES INDICATING USER CAN PROCEED
-void intro(int x) {
-  if (x == 0) { // first intro message
-    cout << "// Welcome to the commodity manager! //" << endl << "\nType \"options\" to view available "
-    "actions and \"help\" for further details regarding available options. Type \"exit\" "
-    "to shut down the program." << endl;
-  }
-  cout << endl << "PLEASE INPUT YOUR SELECTED OPTION TO PROCEED: " << endl;
-}
+void intro(int x);
 
 // INPUT : A command the user wishes to inquire further about
 // OUTPUT : Gives further detail on the function and input style of the command.
 void help(string str);
 
 // Displays all available commands to the user.
-void options() {
-  cout << "Available commands are:\nsearch, insert, delete, "
-  "edit, display, options, help, exit." << endl << endl;
-}
+void options();
 
 // INPUT: String of any length
 // RETURN: String with all alphabetical characters converted into lowercase
@@ -81,6 +71,7 @@ void search_item(commodity* &head);
 
 void display(commodity* &head);
 
+
 int main() {
   commodity* head = NULL;
   initialize_list(head,filename);
@@ -89,7 +80,10 @@ int main() {
   intro(0);
 
 // While loop to take in user input until program end
-  while (getline(cin,userin)) {
+  while (true) {
+    while (userin.length()==0){
+      getline(cin,userin);
+    }
     option = lowercase(userin);
     // separate userin and option so that error messages match case with input
     if (option == "options") {
@@ -111,7 +105,9 @@ int main() {
     else if (option == "edit") {
       cout << "Please enter the name of the item you wish to edit.\n";
       commodity* target = find_by_name(head);
-      edit_item(target);
+      if (target!=NULL) {
+        edit_item(target);
+      }
     }
     else if (option == "insert") {
       insert(head); // INSERT TO BE IMPLEMENTED
@@ -119,16 +115,17 @@ int main() {
     else if (option == "delete") {
       cout << "Please enter the name of the item you wish to delete.\n";
       commodity* target = find_by_name(head);
-      cout << "Are you sure you wish to delete the item: " << target->name << "? (Y/N)\n";
-      char confirm;
-      string temp = target->name;
-      cin >> confirm;
-      if (confirm=='Y') {
-        remove(head, target);
-        cout << "The item \"" << temp << "\" has been deleted."
-      }
-      else {
-        cout << "Action not executed.\n";
+      if (target!=NULL) {
+        cout << "Are you sure you wish to delete the item: " << target->name << "? (Y/N)\n";
+        string confirm, temp = target->name;
+        cin >> confirm;
+        if (lowercase(confirm)=="y") {
+          remove(head, target);
+          cout << "The item \"" << temp << "\" has been deleted.";
+        }
+        else {
+          cout << "Action not executed.\n";
+        }
       }
       // final promt (Y/N) - then "this item has been deleted".
     }
@@ -141,6 +138,7 @@ int main() {
       cout << userin << " is not an available command. Type 'options' to view the available commands.\n";
     }
     intro(1);
+    userin = "";
   }
 
   return 0;

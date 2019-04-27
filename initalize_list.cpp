@@ -12,8 +12,7 @@ void initialize_list(commodity* &head, string filename) {
   commodity item;
   string line;
   ifstream fin0 (filename);
-  // count how many line are in the file so it knows how many times to loop,
-  // there's probably a better way to do this but it works at least
+  // count how many line are in the file so it knows how many times to loop
   while (getline(fin0,line)) {
     count++;
   }

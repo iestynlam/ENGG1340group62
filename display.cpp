@@ -1,12 +1,10 @@
-// reads user input, displays by alphabetical name, alphabetical manuf, ascending
-// or descending quantity
-
-void swap_commodity(commodity &a, commodity &b) {
-  commodity temp;
-  temp = a;
-  a = b;
-  b = temp;
-}
+/* Reads user input to determine what criteria to display stored data by, allows for
+- alphabetical by name
+- alphabetical by manufacturer
+- quantity high to low
+- quantity low to high
+Outputs the list in determined order, does not actually reorganize list.
+*/
 
 void display(commodity* &head) {
   commodity* current = head;
@@ -26,7 +24,7 @@ void display(commodity* &head) {
     current = current->next;
   }
   cin >> choice;
-  // name
+  // aplhabetical by name
   if (choice == 1) {
     cout << "All items in alphabetical order (by name):\n";
     for (int i=1; i<count; i++) {
@@ -37,7 +35,7 @@ void display(commodity* &head) {
       }
     }
   }
-  // manuf
+  // alphabetical by manuf
   else if (choice == 2) {
     cout << "All items in alphabetical order (by manufacturer):\n";
     for (int i=1; i<count; i++) {
@@ -70,7 +68,7 @@ void display(commodity* &head) {
       }
     }
   }
-  //clear dynamically allocated memory and output results
+  //clear dynamically allocated memory to prevent memory leak and prints sorted list
   cout << endl;
   for (int i=0; i<count; i++) {
     print_item(&set[i]);

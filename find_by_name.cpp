@@ -1,12 +1,5 @@
 // This program loops through the linked list to find an item by name, and has error handling in the case of two items having
-// the same name but different manufacturer. Also handles the cases of substrings appearing.
-
-// problems with returend pointer when choosing between values?
-
-//DEPENDENCIES OF find_by_name
-commodity* s_find_by_name(commodity* &head, string target);
-string fill_spaces(string str);
-string lowercase(string str);
+// the same name but different manufacturer. Also handles the cases of substrings appearing, or no matches being returned.
 
 commodity* find_by_name(commodity* &head) {
   string userin, target;
@@ -34,10 +27,11 @@ commodity* find_by_name(commodity* &head) {
     cout << "No items matching \"" << userin << "\" were found.\n";
     return NULL;
   }
-  //case of single perfect match, no substrings
+  //case of single perfect match, no other substrings which could potentially match
   else if (count == 1 && substr_no == 0) {
     return s_find_by_name(head, target);
   }
+  //any other case
   else {
     int n = count+substr_no;
     // dynamically allocated set being declared
@@ -45,17 +39,12 @@ commodity* find_by_name(commodity* &head) {
     // looping through again and inputting any matching values into the set
     current = head;
     count = 0;
-
     while(current!=NULL) {
       if(lowercase(current->name).find(target) != -1) {
         set[count] = *current;
         count++;
       }
       current = current->next;
-    }
-    if(lowercase(current->name).find(target) != -1) {
-      set[count] = *current;
-      count++;
     }
 
     cout << "These matches were found for \"" << userin << "\". Please indicate the appropriate item via its number.\n";
@@ -68,7 +57,7 @@ commodity* find_by_name(commodity* &head) {
     int choice;
     cin >> choice;
 
-    // loops through to not return the copy but the original item in the linked list
+    // loops through to not return the copy but the original item in the linked list, if otherwise - the item returned is only a copy of the intended target
     current = &set[choice -1];
     commodity* current2 = head;
     while(current2!=NULL) {
@@ -78,5 +67,7 @@ commodity* find_by_name(commodity* &head) {
       }
       current2 = current2->next;
     }
-  } // any form of multiple results
+  }
+  
+  return NULL;
 }
