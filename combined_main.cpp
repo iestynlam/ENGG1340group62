@@ -542,7 +542,6 @@ void remove(commodity* &head, commodity* &target) {
     //between case
     current->next = target->next;
     delete target;
-<<<<<<< HEAD
   }
 
 void update_file(commodity* &head, string filename) {
