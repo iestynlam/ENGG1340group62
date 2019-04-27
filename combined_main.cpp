@@ -543,9 +543,6 @@ void remove(commodity* &head, commodity* &target) {
     current->next = target->next;
     delete target;
 <<<<<<< HEAD
-    }
-=======
->>>>>>> 9a520bbe643a0db680dd9ee05ac4215ca32aeec5
   }
 
 void update_file(commodity* &head, string filename) {
