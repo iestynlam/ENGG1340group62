@@ -2,6 +2,7 @@
 
 #include <iostream>
 #include <string>
+#include "all_functions.h"
 using namespace std;
 
 void help(string userin) {

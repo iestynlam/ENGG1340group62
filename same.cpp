@@ -1,5 +1,6 @@
 // return True if the two files are the same
 #include <fstream>
+#include "all_functions.h"
 using namespace std;
 
 bool same(string buffer, string old_filename) {

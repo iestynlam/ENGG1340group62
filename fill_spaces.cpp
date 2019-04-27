@@ -2,6 +2,7 @@
 //ensuring names in the system have no spaces so that items can be easily retrieved from the 'inventory.txt'
 
 #include <string>
+#include "all_functions.h"
 using namespace std;
 
 string fill_spaces(string str) {

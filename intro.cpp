@@ -1,6 +1,7 @@
 // INTRODUCTORY MESSAGE & MESSAGES INDICATING USER CAN PROCEED
 
 #include <iostream>
+#include "all_functions.h"
 using namespace std;
 
 void intro(int x) {
