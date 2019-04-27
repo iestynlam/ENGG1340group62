@@ -1,6 +1,14 @@
 // This program loops through the linked list to find an item by name, and has error handling in the case of two items having
 // the same name but different manufacturer. Also handles the cases of substrings appearing, or no matches being returned.
 
+#include <iostream>
+#include <string>
+using namespace std;
+
+commodity* s_find_by_name(commodity* &head, string target);
+string fill_spaces(string str);
+string lowercase(string str);
+
 commodity* find_by_name(commodity* &head) {
   string userin, target;
   while (userin.length()==0) {
@@ -68,6 +76,6 @@ commodity* find_by_name(commodity* &head) {
       current2 = current2->next;
     }
   }
-  
+
   return NULL;
 }

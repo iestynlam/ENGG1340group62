@@ -1,5 +1,10 @@
 // only to be used within the system, has no error handling for user input
 // Can be used when: Only ONE item in linked list matches the EXACT name
+#include <string>
+using namespace std;
+
+string lowercase(string str);
+string fill_spaces(string str)
 
 commodity* s_find_by_name(commodity* &head, string target) {
   commodity* current = head;

@@ -2,6 +2,17 @@
 // Has error-handling in the case that the entered item already exists in the program, and allows users to change their input accordingly
 // - justification : one worker may input a new shipment of a new good and find out that someone has already done so, thus they can adjust accordingly
 
+#include <iostream>
+#include <string>
+#include <cmath>
+using namespace std;
+
+string fill_spaces(string str);
+string lowercase(string str);
+bool digit_check(string str_input);
+void print_item(commodity* item);
+void append_item(commodity* &head, string name, string manuf, int qty);
+
 void insert(commodity* &head) {
   commodity new_item;
   string item_name,item_manuf,str_input;

@@ -1,5 +1,12 @@
 // Reads user input to determine by name or manufacturer or qty status
 // prints items that match query to screen, has handling for partial entry of names/manufacturers
+#include <iostream>
+#include <string>
+using namespace std;
+
+string lowercase(string str);
+string fill_spaces(string str);
+void print_item(commodity* item);
 
 void search_item(commodity* &head) {
   commodity* current = head;

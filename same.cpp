@@ -1,5 +1,6 @@
-// return Ture if the two files are the same
+// return True if the two files are the same
 #include <fstream>
+using namespace std;
 
 bool same(string buffer, string old_filename){
   ifstream update;

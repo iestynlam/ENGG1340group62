@@ -8,6 +8,13 @@ displays the current data of the item and provides options for what to change
 - cancel
 */
 
+#include <iostream>
+#include <string>
+using namespace std;
+
+void print_item(commodity* item);
+string fill_spaces(string str);
+
 void edit_item(commodity* &target) {
   cout << "Current Data:" << endl;
   print_item(target);

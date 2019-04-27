@@ -7,6 +7,8 @@ using namespace std;
 
 const string filename = "inventory.txt";
 
+void append_item(commodity* &head, string name, string manuf, int qty);
+
 void initialize_list(commodity* &head, string filename) {
   int count=0;
   commodity item;

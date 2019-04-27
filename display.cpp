@@ -5,6 +5,12 @@
 - quantity low to high
 Outputs the list in determined order, does not actually reorganize list.
 */
+#include <iostream>
+#include <string>
+using namespace std;
+
+void swap_commodity(commodity &a, commodity &b);
+void print_item(commodity* item);
 
 void display(commodity* &head) {
   commodity* current = head;

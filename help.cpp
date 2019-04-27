@@ -1,5 +1,9 @@
 // Takes in user input and returns details regarding the specific command.
 
+#include <iostream>
+#include <string>
+using namespace std;
+
 void help(string userin) {
   string str = lowercase(userin);
   if (str == "options") {

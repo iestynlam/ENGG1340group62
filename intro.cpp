@@ -1,5 +1,8 @@
 // INTRODUCTORY MESSAGE & MESSAGES INDICATING USER CAN PROCEED
 
+#incude <iostream>
+using namespace std;
+
 void intro(int x) {
   if (x == 0) { // first intro message
     cout << "// Welcome to the commodity manager! //" << endl << "\nType \"options\" to view available "
