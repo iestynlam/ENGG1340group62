@@ -4,7 +4,6 @@
 using namespace std;
 
 string lowercase(string str);
-string fill_spaces(string str)
 
 commodity* s_find_by_name(commodity* &head, string target) {
   commodity* current = head;
