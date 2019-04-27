@@ -2,7 +2,7 @@
 #include <fstream>
 using namespace std;
 
-bool same(string buffer, string old_filename){
+bool same(string buffer, string old_filename) {
   ifstream update;
   update.open(buffer.c_str());
   ifstream old;

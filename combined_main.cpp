@@ -543,19 +543,6 @@ void remove(commodity* &head, commodity* &target) {
     }
   }
 
-void update_file(commodity* &head, string filename) {
-  ofstream ostream;
-  string line;
-  commodity* &current = head;
-  ostream.open(filename);
-  while (current -> next != NULL){
-    ostream << current -> name << ' ' << current -> manuf << ' ' << current -> qty << endl;
-    current = current -> next;
-  }
-  ostream << current -> name << ' ' << current -> manuf << ' ' << current -> qty;
-  ostream.close();
-}
-
 void end_program(commodity* &head) {
   // copy pasting inventory into old_inventory
   ifstream fin (filename);
