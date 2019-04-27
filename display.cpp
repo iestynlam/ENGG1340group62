@@ -7,7 +7,6 @@ Outputs the list in determined order, does not actually reorganize list.
 */
 #include <iostream>
 #include <string>
-#include "all_functions.h"
 using namespace std;
 
 void swap_commodity(commodity &a, commodity &b);

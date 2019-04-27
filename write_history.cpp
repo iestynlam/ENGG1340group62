@@ -1,6 +1,5 @@
 #include <fstream>
 #include <ctime>
-#include "all_functions.h"
 using namespace std;
 const string filename = "inventory.txt";
 const string inventory_history = "inventory_history.txt";

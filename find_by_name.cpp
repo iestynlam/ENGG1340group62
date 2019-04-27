@@ -3,7 +3,6 @@
 
 #include <iostream>
 #include <string>
-#include "all_functions.h"
 using namespace std;
 
 commodity* s_find_by_name(commodity* &head, string target);

@@ -1,6 +1,5 @@
 #include <iostream>
 #include <fstream>
-#include "all_functions.h"
 using namespace std;
 
 // prints all of the lines in the inventory_history file

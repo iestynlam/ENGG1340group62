@@ -1,7 +1,6 @@
 // only to be used within the system, has no error handling for user input
 // Can be used when: Only ONE item in linked list matches the EXACT name
 #include <string>
-#include "all_functions.h"
 using namespace std;
 
 string lowercase(string str);

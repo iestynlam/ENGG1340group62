@@ -2,7 +2,6 @@
 characters are digits and the main insert command prompts users to reenter a valid input.*/
 #include <string>
 #include <iostream>
-#include "all_functions.h"
 using namespace std;
 
 bool digit_check(string str_input) {

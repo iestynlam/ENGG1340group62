@@ -2,7 +2,6 @@
 // prints items that match query to screen, has handling for partial entry of names/manufacturers
 #include <iostream>
 #include <string>
-#include "all_functions.h"
 using namespace std;
 
 string lowercase(string str);

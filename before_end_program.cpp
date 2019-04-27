@@ -1,6 +1,5 @@
 #include <fstream>
 #include <string>
-#include "all_functions.h"
 using namespace std;
 const string filename = "inventory.txt";
 const string old_filename = "old_inventory.txt";

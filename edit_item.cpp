@@ -10,7 +10,6 @@ displays the current data of the item and provides options for what to change
 
 #include <iostream>
 #include <string>
-#include "all_functions.h"
 using namespace std;
 
 void print_item(commodity* item);

@@ -1,6 +1,5 @@
 // INPUT: A head pointer and a target pointer
 // FUNCTIONL: removes target pointer from list and deletes allocated memory, then relinks list
-#include "all_functions.h"
 using namespace std;
 
 void remove(commodity* &head, commodity* &target) {

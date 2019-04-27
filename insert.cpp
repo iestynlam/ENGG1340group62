@@ -5,7 +5,6 @@
 #include <iostream>
 #include <string>
 #include <cmath>
-#include "all_functions.h"
 using namespace std;
 
 string fill_spaces(string str);

@@ -17,13 +17,6 @@ Program Features:
 - display inventory history
 */
 
-// Struct used to hold details of all commodities.
-struct commodity {
-  string name; // name of commodity
-  string manuf; // name of manufacturer
-  int qty; // quantity of commodity
-  commodity* next; // setting up linked list
-} ;
 
 // INTRODUCTORY MESSAGE & MESSAGES INDICATING USER CAN PROCEED
 void intro(int x);
