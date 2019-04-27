@@ -25,24 +25,14 @@ struct commodity {
 } ;
 
 // INTRODUCTORY MESSAGE & MESSAGES INDICATING USER CAN PROCEED
-void intro(int x) {
-  if (x == 0) { // first intro message
-    cout << "// Welcome to the commodity manager! //" << endl << "\nType \"options\" to view available "
-    "actions and \"help\" for further details regarding available options. Type \"exit\" "
-    "to shut down the program." << endl;
-  }
-  cout << endl << "PLEASE INPUT YOUR SELECTED OPTION TO PROCEED: " << endl;
-}
+void intro(int x);
 
 // INPUT : A command the user wishes to inquire further about
 // OUTPUT : Gives further detail on the function and input style of the command.
 void help(string str);
 
 // Displays all available commands to the user.
-void options() {
-  cout << "Available commands are:\nsearch, insert, delete, "
-  "edit, display, history, options, help, exit." << endl << endl;
-}
+void options();
 
 // INPUT: String of any length
 // RETURN: String with all alphabetical characters converted into lowercase
@@ -131,7 +121,7 @@ int main() {
         cin >> confirm;
         if (lowercase(confirm)=="y") {
           remove(head, target);
-          cout << "The item \"" << temp << "\" has been deleted.";
+          cout << "The item \"" << temp << "\" has been deleted.\n";
         }
         else {
           cout << "Action not executed.\n";

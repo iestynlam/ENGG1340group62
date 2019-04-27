@@ -86,7 +86,7 @@ void help(string userin) {
 
 void options() {
   cout << "Available commands are:\nsearch, insert, delete, "
-  "edit, display, options, help, exit." << endl << endl;
+  "edit, display, options, help, exit." << endl;
 }
 
 string fill_spaces(string str) {
@@ -161,7 +161,6 @@ commodity* find_by_name(commodity* &head) {
     getline(cin,userin);
   }
   target = fill_spaces(lowercase(userin));
-
   //loop through linked list to find number of matching item(s)
   int count = 0, substr_no = 0;
   commodity* current = head;
@@ -175,7 +174,6 @@ commodity* find_by_name(commodity* &head) {
     }
     current = current->next;
   }
-
   //case of no matches
   if (count == 0 && substr_no == 0) {
     cout << "No items matching \"" << userin << "\" were found.\n";
@@ -185,6 +183,7 @@ commodity* find_by_name(commodity* &head) {
   else if (count == 1 && substr_no == 0) {
     return s_find_by_name(head, target);
   }
+
   else {
     int n = count+substr_no;
     // dynamically allocated set being declared
@@ -402,7 +401,6 @@ void display(commodity* &head) {
     }
   }
   //clear dynamically allocated memory and output results
-  cout << endl;
   for (int i=0; i<count; i++) {
     print_item(&set[i]);
   }
@@ -515,7 +513,7 @@ void insert(commodity* &head) {
       }
 
       else if (choice == 4) {
-        cout << "Action cancelled.";
+        cout << "Action cancelled." << endl;
         exists = true;
         break;
       }
@@ -542,6 +540,7 @@ void remove(commodity* &head, commodity* &target) {
     //between case
     current->next = target->next;
     delete target;
+    }
   }
 
 void update_file(commodity* &head, string filename) {
@@ -695,7 +694,7 @@ int main() {
         cin >> confirm;
         if (lowercase(confirm)=="y") {
           remove(head, target);
-          cout << "The item \"" << temp << "\" has been deleted.";
+          cout << "The item \"" << temp << "\" has been deleted.\n";
         }
         else {
           cout << "Action not executed.\n";

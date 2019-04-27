@@ -1,8 +1,4 @@
-// stores all the information of the various commands in the program
-
-#include <iostream>
-#include <string>
-using namespace std;
+// Takes in user input and returns details regarding the specific command.
 
 void help(string userin) {
   string str = lowercase(userin);
@@ -11,7 +7,8 @@ void help(string userin) {
   }
   else if (str == "search") {
     cout << "Used to search for commodities according to specific filters." << endl
-    << "Available filters are:" << endl << "filter 1, filter 2, etc";
+    << "Available filters are:" << endl << "- search by name\n- search by manufacturer\n- search by in stock"
+    "\n- search by out of stock\n";
   }
   else if (str == "insert") {
     cout << "Used to insert a new commodity into the program.";
@@ -20,14 +17,14 @@ void help(string userin) {
     cout << "To delete a commodity from the program.";
   }
   else if (str == "exit") {
-    cout << "Terminates the program.";
+    cout << "Saves all changes to commodities and terminates the program.";
   }
   else if (str == "edit") {
     cout << "Edit details of an existing commodity. Allows you to change item name, manufacturer, and add/decrease/set quantity.";
   }
   else if (str == "display") {
     cout << "Displays all items currently in the system, along with";
-    " associated information.";
+    " associated information. Can be displayed by name, name of manufacturer, and increasing/decreasing quantity.";
   }
   else if (str == "help") {
     cout << "Provides further details on the functions of available commands.";

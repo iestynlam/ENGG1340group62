@@ -1,22 +1,6 @@
-// NEEDS TO BE REVAMPED, give error message and error processing at the end, return NULL if user decides
-// to abandon process.
-#include <iostream>
-#include <string>
-#include <cmath>
-using namespace std;
-
-/* checks if all characters are digits to ensure input is an int. Returns true if not all
-characters are digits and the main insert command prompts users to reenter a valid input.*/
-bool digit_check(string str_input) {
-  for (int i = 0; i < str_input.length() ; i++) {
-    if (isdigit(str_input[i]) == false) {
-      cout << "Only integers can be entered for this field. Please enter a valid input." << endl;
-      return false;
-    }
-  }
-  return true;
-}
-
+// Reads user input for the data needed to add a new commodity into the inventory management system
+// Has error-handling in the case that the entered item already exists in the program, and allows users to change their input accordingly
+// - justification : one worker may input a new shipment of a new good and find out that someone has already done so, thus they can adjust accordingly
 
 void insert(commodity* &head) {
   commodity new_item;
@@ -26,17 +10,17 @@ void insert(commodity* &head) {
   "If the manufacturer is unavailable, please enter \"-\"." << endl;
 
   cout << "NAME: ";
-  while (item_name.length()==0) {
+  while (item_name.length()==0) { // prevents the program from using the newline character
     getline(cin,item_name);
   }
-  item_name = lowercase(fill_spaces(item_name)); // function to fill any spaces with '_', probably will be used elsewhere in the program for searches and such
+  item_name = fill_spaces(item_name); // all names / manufacturers cannot have spaces so fill_spaces handles the potential error
   new_item.name = item_name;
 
   cout << "MANUFACTURER: ";
   while (item_manuf.length()==0) {
     getline(cin,item_manuf);
   }
-  item_manuf = lowercase(fill_spaces(item_manuf));
+  item_manuf = fill_spaces(item_manuf);
   if (item_manuf == "-") {
     new_item.manuf = "[n/a]";
   }
@@ -70,6 +54,7 @@ void insert(commodity* &head) {
 
       if (choice == 1) {
         current->qty+=new_item.qty;
+        cout << "Quantities merged." << endl;
         exists = true;
         break;
       }
@@ -84,9 +69,10 @@ void insert(commodity* &head) {
               item_name = "";
             }
         }
-        item_name = lowercase(fill_spaces(item_name)); // function to fill any spaces with '_', probably will be used elsewhere in the program for searches and such
+        item_name = fill_spaces(item_name);
         new_item.name = item_name;
         append_item(head, new_item.name, new_item.manuf, new_item.qty);
+        cout << "Item added." << endl;
         exists = true;
         break;
       }
@@ -96,7 +82,7 @@ void insert(commodity* &head) {
         cout << "MANUFACTURER:\n";
         while (item_manuf.length()==0) {
           getline(cin,item_manuf);
-          item_manuf = lowercase(fill_spaces(item_manuf));
+          item_manuf = fill_spaces(item_manuf);
           if (item_manuf == "-") {
             new_item.manuf = "[n/a]";
           }
@@ -109,19 +95,22 @@ void insert(commodity* &head) {
             }
           }
         append_item(head, new_item.name, new_item.manuf, new_item.qty);
+        cout << "Item added." << endl;
         exists = true;
         break;
       }
 
       else if (choice == 4) {
-        cout << "Action cancelled.";
+        cout << "Action cancelled." << endl;
         exists = true;
         break;
       }
     }
     current = current->next;
   }
+  // if item doesnt already exist
   if (exists==false) {
     append_item(head, new_item.name, new_item.manuf, new_item.qty);
+    cout << "Item added." << endl;
   }
 }
