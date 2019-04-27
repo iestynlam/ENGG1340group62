@@ -1,6 +1,6 @@
 // INTRODUCTORY MESSAGE & MESSAGES INDICATING USER CAN PROCEED
 
-#incude <iostream>
+#include <iostream>
 using namespace std;
 
 void intro(int x) {

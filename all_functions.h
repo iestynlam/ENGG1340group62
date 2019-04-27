@@ -1,6 +1,7 @@
 #ifndef ALL_FUNCTIONS_H
 #define ALL_FUNCTIONS_H
 #include <string>
+using namespace std;
 
 struct commodity {
   string name; // name of commodity

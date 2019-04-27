@@ -21,10 +21,10 @@ edit_item.o: edit_item.cpp print_item.cpp fill_spaces.cpp
 display.o: display.cpp swap_commodity.cpp print_item.cpp
 	g++ $^ -c
 
-insert.o: lowercase.cpp fill_spaces.cpp digit_check.cpp print_item.cpp append_item.cpp
+insert.o: insert.cpp lowercase.cpp fill_spaces.cpp digit_check.cpp print_item.cpp append_item.cpp
 	g++ $^ -c
 
-before_end_program.o: same.cpp write_history.cpp
+before_end_program.o: before_end_program.cpp same.cpp write_history.cpp
 	g++ $^ -c
 
 clean:

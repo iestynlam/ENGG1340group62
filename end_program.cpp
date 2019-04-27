@@ -8,7 +8,7 @@ using namespace std;
 
 const string filename = "inventory.txt";
 const string old_filename = "old_inventory.txt";
-const string history = "inventory_history.txt";
+const string inventory_history = "inventory_history.txt";
 const string buffer = "buffer.txt";
 /*
 - clears 'old_inventory.txt'

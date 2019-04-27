@@ -19,5 +19,4 @@ void remove(commodity* &head, commodity* &target) {
     current->next = target->next;
     delete target;
     }
-  }
 }
