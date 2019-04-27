@@ -1,5 +1,6 @@
 #ifndef ALL_FUNCTIONS_H
 #define ALL_FUNCTIONS_H
+#include <string>
 
 struct commodity {
   string name; // name of commodity
